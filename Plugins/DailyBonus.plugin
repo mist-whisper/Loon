@@ -52,5 +52,10 @@ cron {Soul_CRONEXP} script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx
 http-response https:\/\/payapp\.weixin\.qq\.com\/(coupon-center-user\/home\/login|coupon-center-award\/award\/detail) tag=支付有优惠Cookie,script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/wechat_pay_coupon.js,requires-body=1,enable={WechatPay_Cookie}
 cron {WechatPay_CRONEXP} script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/wechat_pay_coupon.js,tag=支付有优惠金币获取,enable={WechatPay_DailyBonus}
 
+# 随乐游
+http-request ^https:\/\/m\.suileyoo\.com\/api\/user\/profile script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/SLY.js, timeout=60, tag=SLY
+
+cron "1 0 * * *" script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/SLY.js, timeout=120, tag=随乐游
+
 [MITM]
-hostname = app.bilibili.com, mxsa.mxbc.net, payapp.weixin.qq.com, increase-openapi.soulapp.cn, maicai.api.ddxq.mobi
+hostname = app.bilibili.com, mxsa.mxbc.net, payapp.weixin.qq.com, increase-openapi.soulapp.cn, maicai.api.ddxq.mobi, m.suileyoo.com
