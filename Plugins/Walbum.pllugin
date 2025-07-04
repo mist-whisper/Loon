@@ -1,0 +1,17 @@
+#!name = Walbum：表盘专辑
+#!desc = 解锁Walbum Gold 永久会员，恢复购买即可使用。
+#!openUrl = 
+#!author = ZenmoFeiShi[https://github.com/ZenmoFeiShi]
+#!tag = 会员解锁
+#!system = iOS iPadOS
+#!system_version = 15
+#!loon_version = 3.2.9(837)
+#!homepage = https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Walbum.png
+#!date = 2025-05-13 11:03:00
+
+[Script]
+http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/BPZJ.js, requires-body=true, timeout=60, tag=Walbum会员解锁
+
+[MITM]
+hostname = buy.itunes.apple.com

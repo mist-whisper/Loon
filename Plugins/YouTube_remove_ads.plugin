@@ -1,0 +1,28 @@
+#!name=YouTube去广告
+#!desc=移除YouTube视频、瀑布流、搜索和Shorts中的广告，移除底部的上传按钮和Shorts按钮，增加画中画及字幕翻译功能，支持后台播放。此插件需要Loon版本为3.1.7(677)及以上，且需要启用QUIC回退保护。支持Premium订阅用户使用，不支持tvOS设备。
+#!author=Maasea[https://github.com/Maasea],wish[https://github.com/mist-whisper]
+#!tag=去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/YouTube.png
+#!date=2025-06-05 16:15:00
+
+[Argument]
+blockUpload=switch,false,true,tag=隐藏上传按钮,desc=用于隐藏YouTube底栏的上传按钮
+blockShorts=switch,false,true,tag=隐藏短视频按钮,desc=用于隐藏YouTube底栏的Shorts按钮
+captionLang=select,"off","zh-Hans","zh-Hant","ja","ko","en",tag=字幕翻译语言,desc=需要把YouTube字幕翻译翻译为何种语言
+
+[Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,QUIC)),REJECT
+AND,((DOMAIN-SUFFIX,youtubei.googleapis.com),(PROTOCOL,QUIC)),REJECT
+
+[Rewrite]
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad mock-response-body data-type=text status-code=200
+
+[Script]
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.response.js,requires-body=true,binary-body-mode=true,argument=[{blockUpload},{blockShorts},{captionLang}],tag=YouTube去广告
+
+[MitM]
+hostname=*.googlevideo.com,youtubei.googleapis.com
