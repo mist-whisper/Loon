@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/Spotify.png
-#!date=2025-06-18 12:24:00
+#!date=2025-07-04 16:36:19
 
 [Argument]
 tab=switch, "true", "false", tag=移除底栏创建按钮, desc=此开关控制是否移除底栏创建按钮
