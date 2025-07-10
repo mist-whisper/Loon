@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/FleaMarket.png
-#!date=2025-07-10 22:32:07
+#!date=2025-07-10 22:53:07
 
 [Rule]
 AND, ((URL-REGEX, "^http:\/\/.+\/amdc\/mobileDispatch"), (USER-AGENT, "%E9%97%B2%E9%B1%BC*")), REJECT
@@ -46,6 +46,8 @@ AND, ((URL-REGEX, "^http:\/\/.+\/amdc\/mobileDispatch"), (USER-AGENT, "%E9%97%B2
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/ response-body-json-jq '.data.circleList[].showInfo.titleImage |= (.lightUrl="" | .url="" | del(.width, .height))'
 
 ^https:\/\/g-acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/ response-body-json-jq '.data.resultList |= map(if .data.item.main.exContent.dislikeFeedback.clickParam.args.bizType == "ad" then empty else . end)'
+
+^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\.discover\/ response-body-json-jq '.data.resultList |= map(select(.type != "MarketHotSpot"))'
 
 ^https:\/\/acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.item\.search\.activate\/ response-body-json-jq '.data.cardList |= map(if has("cardData") and (.cardData | has("hotwords")) then .cardData |= del(.hotwords) else . end)'
 
