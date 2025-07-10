@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/mist-whisper/Loon/master/Rules/Mainland/Mainland.list

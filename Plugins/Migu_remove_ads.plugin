@@ -1,0 +1,22 @@
+#!name=咪咕视频去广告
+#!desc=移除开屏广告、解锁VIP和画质。
+#!openUrl=
+#!author=WeiGiegie[https://github.com/WeiGiegie]
+#!tag=去广告解锁
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Migu.png
+#!date=2025-05-23 16:53:02
+
+[Rewrite]
+^https://.*miguvideo\.com/request/sdk reject-200
+^https://common-sc\.miguvideo\.com/task/v7/task-list/cmvideo/visitor reject-200
+
+[Script]
+http-response ^https?:\/\/(play|dis).*miguvideo.com\/(play|dis)(url|play)\/.*$ script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/mgsp.js, requires-body=true, timeout=60, tag=咪咕视频VIP
+http-request ^https?:\/\/play.miguvideo.com\/playurl\/v1\/play\/playurl\?2Kvivid=true?.*=true$ script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/mgspck.js, timeout=60, tag=咪咕视频CK
+
+[MITM]
+hostname = *.miguvideo.com

@@ -1,0 +1,17 @@
+#!name = Notability
+#!desc = 解锁Notability Plus会员
+#!openUrl = 
+#!author = chxm1023[https://github.com/chxm1023]
+#!tag = 会员解锁
+#!system = iOS iPadOS
+#!system_version = 15
+#!loon_version = 3.2.9(837)
+#!homepage = https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Notability.png
+#!date = 2025-03-30 21:50:17
+
+[Script]
+http-response ^https?:\/\/notability\.com\/(global|subscriptions) script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/Notability/Notability.js, requires-body=true, timeout=60, tag=Notability Plus会员
+
+[MITM]
+hostname = notability.com
