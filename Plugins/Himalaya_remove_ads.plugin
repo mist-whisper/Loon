@@ -7,10 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/Himalaya.png
-#!date=2025-05-15 11:07:00
-
-[Argument]
-# VIP_Shared=switch,"false","true",tag=共享会员,desc=
+#!date=2025-07-11 17:53:22
 
 [Rule]
 DOMAIN, adse.ximalaya.com, REJECT
@@ -20,7 +17,6 @@ DOMAIN, adbehavior.ximalaya.com, REJECT
 DOMAIN, adbehavior.wsa.ximalaya.com, REJECT
 
 [Rewrite]
-^https:\/\/searchwsa\.ximalaya\.com\/hub\/hotWordBillboard  reject-dict
 ^https:\/\/(search|searchwsa)\.ximalaya\.com\/hub\/(guideWord|hotWord)V\d\/ reject-dict
 
 ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/discovery-feed\/v\d\/mix\/ response-body-json-jq '.heData |= map(select(.item.list[].bizType != "SceneListenCard"))'
@@ -42,6 +38,8 @@ DOMAIN, adbehavior.wsa.ximalaya.com, REJECT
 
 ^https:\/\/(m|mwsa)\.ximalaya\.com\/community\/square\/v\d\/stream\? mock-response-body data-type=json data="{"data":{"cards":[{"content":{},"type":"RECOMMENDS"}]},"ret":0}" status-code=200
 
+^https:\/\/mobwsa\.ximalaya\.com\/mobile-playpage\/playpage\/tabs\/v2\/ response-body-json-del data.playpage.resourceMap.defaultResource data.playpage.resourceMap.playPageTip
+
 ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-playpage\/playpage\/recommendContentV\d\/ reject-dict
 
 ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-playpage\/playpage\/recommend\/resource\/allocation\/ reject-dict
@@ -61,8 +59,5 @@ DOMAIN, adbehavior.wsa.ximalaya.com, REJECT
 
 ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-user\/v\d\/purchased\/recommend\/ reject-dict
 
-[Script]
-# http-request ^https:\/\/mobile\.ximalaya\.com\/mobile-playpage\/(?:track\/v4\/baseInfo|playpage\/recommendContentV2|playpage\/tabs\/v2) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Himalaya/Share_vip.js,requires-body=false,binary-body-mode=false,timeout=20,tag=共享会员,enable={VIP_Shared}
-
 [MitM]
-hostname = gslbali.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, m.ximalaya.com, mwsa.ximalaya.com, -101.91.13*
+hostname=gslbali.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, m.ximalaya.com, mwsa.ximalaya.com
