@@ -1,0 +1,119 @@
+#!name = 国内影视平台去广告
+#!desc = 国内影视平台去广告
+#!openUrl = 
+#!author = RuCu6[https://github.com/Rucu6],Yu9191[https://github.com/Yu9191]
+#!tag = 去广告
+#!system = iOS iPadOS
+#!system_version = 15
+#!loon_version = 3.2.9(837)
+#!homepage = https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/Loon_icon/11.png
+#!date = 2024-07-22 22:45
+
+[Rewrite]
+# 无用请求
+^http:\/\/[\d\.]+:\d{5}\/\?cmd=indexes - reject
+# 腾讯视频 //vv.video.qq.com
+^http:\/\/[\d\.:]*\/?(defaultts\.tc|vmind\.qqvideo\.tc|finderpdd\.video)\.qq\.com\/\w+ - reject
+^http:\/\/apd-vlive\.apdcdn\.tc\.qq\.com\/vmind\.qqvideo\.tc\.qq\.com\/\w+ - reject
+^http:\/\/apd-\w+\.v\.smtcdns\.com\/(defaultts|omts|vmind\.qqvideo)\.tc\.qq\.com\/\w+ - reject
+# 播放页开通会员提示
+^https:\/\/act\.vip\.iqiyi\.com\/interact\/api\/v2\/show\? - reject-dict
+# 播放页多余动效
+^https:\/\/iface2\.iqiyi\.com\/ivos\/interact\/video\/data\? - reject-dict
+# 播放页升级白金会员按钮
+^https:\/\/iface2\.iqiyi\.com\/video\/3\.0\/v_interface_proxy\? - reject-dict
+# 青少年弹窗
+^https:\/\/iface2\.iqiyi\.com\/views_pop\/3\.0\/pop_control\? - reject-dict
+# 首页左上角推广
+^http:\/\/[\d\.]+\/odin\/c1\/(channel\/ads|skin\/config)\? - reject-dict
+# 底部tab红点
+^https:\/\/damang\.api\.mgtv\.com\/station\/album\/red\/dot\? - reject-dict
+# 播放器界面
+^https:\/\/hb-boom\.api\.mgtv\.com\/release\/pullReleaseInfo - reject-dict
+# 升级弹窗
+^https:\/\/mobile\.api\.mgtv\.com\/v2\/mobile\/checkUpdate\? - reject-dict
+# 播放详情页
+^http:\/\/mobile-thor\.api\.mgtv\.com\/v1\/vod\/cms\/list\? - reject-dict
+# 搜索框填充词
+^http:\/\/mobileso\.bz\.mgtv\.com\/spotlight\/search\/v1\? - reject-dict
+^https?:\/\/vv\.video\.qq\.com\/(diff|get)vmind - reject-dict
+# 播放页弹窗动图
+^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.(pisp\.scripts\.get|xspace\.play\.position\.preload\.query|xspace\.poplayer\.position\.query) - reject-dict
+
+[Script]
+# 首页信息流广告
+http-response ^http:\/\/[\d\.]+\/3f1\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-response ^http:\/\/access\.if\.iqiyi\.com\/3f1\/cards\.iqiyi\.com\/(views_category\/3\.0\/category_home|views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-response ^https:\/\/cards\.iqiyi\.com\/views_category\/3\.0\/(category_home|categorylib_content|film_hybrid)\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-response ^https:\/\/cards\.iqiyi\.com\/(views_home\/3\.0\/qy_home|waterfall\/3\.0\/feed)\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 播放详情页
+http-response ^https:\/\/cards\.iqiyi\.com\/views_plt\/3\.0\/player_tabs_v2\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 搜索页列表
+http-response ^https:\/\/cards\.iqiyi\.com\/views_search\/3\.0\/(hot_query_)?search\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 评论区
+http-response ^https:\/\/comment-card\.iqiyi\.com\/views_comment\/3\.0\/long_video_comments\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 我的页面菜单
+http-response ^https:\/\/iface2\.iqiyi\.com\/aggregate\/3\.0\/getMyMenus\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 首页左上角天气
+http-response ^https:\/\/iface2\.iqiyi\.com\/control\/3\.0\/init_proxy\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 通用控制,各tab页二楼
+http-response ^https:\/\/iface2\.iqiyi\.com\/fusion\/3\.0\/common_switch\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 底部tab,顶部tab
+http-response ^https:\/\/iface2\.iqiyi\.com\/views\/3\.0\/(bottom_theme|home_top_menu)\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 搜索框填充词
+http-response ^https:\/\/search\.video\.iqiyi\.com\/q\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 开屏广告,播放广告
+http-response ^https?:\/\/(kjp|t7z)\.cupid\.iqiyi\.com\/mixer\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 我的页面
+http-response ^https:\/\/me\.bz\.mgtv\.com\/v3\/module\/list\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 首页信息流,顶部tab
+http-response ^http:\/\/mob-st\.bz\.mgtv\.com\/odin\/c1\/channel\/index\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-response ^https?:\/\/dc2?\.bz\.mgtv\.com\/dynamic\/v1\/channel\/(index|vrsList)\/\w script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 底部tab
+http-response ^https:\/\/mobile\.api\.mgtv\.com\/mobile\/config\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-response ^https:\/\/mobile\.api\.mgtv\.com\/v10\/video\/info\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-response ^https:\/\/mobile-thor\.api\.mgtv\.com\/v1\/vod\/info\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-response ^https?:\/\/mobileso\.bz\.mgtv\.com\/mobile\/recommend\/v2\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+http-request ^https?:\/\/vv\.video\.qq\.com\/getvinfo script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CommonScript/replace-body.js, requires-body=true, timeout=30, tag=replaceBody, argument=%26sppreviewtype%3D%5Cd(.*)%26spsrt%3D%5Cd-%3E%26sppreviewtype%3D0%241%26spsrt%3D0
+
+# 播放详情页,首页信息流,顶部tab,我的页面,评论区
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.columbus\.(gateway\.new\.execute|home\.feed|home\.query|uc\.query|ycp\.query) script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 底部tab
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.haidai\.lantern\.appconfig\.get script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 青少年模式弹窗
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.huluwa\.dispatcher\.youthmode\.config2 script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 搜索列表
+http-response ^https:\/\/acs\.youku\.com\/gw\/mtop\.youku\.soku\.yksearch script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 热剧弹窗
+http-response ^https:\/\/push\.m\.youku\.com\/collect-api\/get_push_interval_config_wx\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+# 开屏广告
+http-response ^https:\/\/un-acs\.youku\.com\/gw\/mtop\.youku\.play\.ups\.appinfo\.get script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/CNFTP/CNFTP.js, requires-body=true, timeout=60, tag=CNFTP
+
+[MITM]
+hostname = -i.vip.iqiyi.com, *.iqiyi.com, *.mgtv.com, vv.video.qq.com, acs.youku.com, push.m.youku.com, un-acs.youku.com

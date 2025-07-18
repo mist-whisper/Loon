@@ -1,0 +1,58 @@
+#!name = 叮咚买菜去广告
+#!desc = 移除开屏广告、弹窗推广、搜索推荐、信息流广告、悬浮广告、各页面购物推荐、精简我的页面，移除底栏和各页面AI入口。
+#!openUrl = 
+#!author = zirawell[https://github.com/zirawell], 可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md], wish[https://github.com/mist-whisper]
+#!tag = 去广告
+#!system = iOS iPadOS
+#!system_version = 15
+#!loon_version = 3.2.9(837)
+#!homepage = https://github.com/luestr/ProxyResource/blob/main/README.md
+#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Dingdong.png
+#!date = 2025-05-13 15:17:08
+
+[Rule]
+DOMAIN, trackercollect.ddxq.mobi, REJECT
+DOMAIN, ddfs-public.ddimg.mobi, REJECT
+DOMAIN, rttrack.ddxq.mobi, REJECT
+
+[Rewrite]
+^https?:\/\/119\.29\.29\.\d+\/d reject-200
+
+^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ reject
+
+^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/getHomeAdPop reject
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/vip\/getVipAd\/\? reject-dict
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/marketingNotice\? reject-dict
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/search\/rollHotKeyword\? reject-dict
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/search\/rankingList\? reject-dict
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/search\/hotKeyword\? reject-dict
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/order\/getRecommend$ reject-dict
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/userLike\? reject-dict
+
+^https:\/\/user\.api\.ddxq\.mobi\/userportal-service\/api\/v1\/user\/queryMyPage\/\? reject-dict
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/categoriesNewDetail\? response-body-json-del data.ad_info
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/tool\/getConfig\? response-body-json-del data.ai_enter_config
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/guide-service\/userLike\/flowData$ reject-dict
+
+^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/newDetails\? response-body-json-del data.top_advert_data data.suspension
+
+^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/newDetails\? response-body-json-jq '.data.list |= map(select(has("capsule_freedom_zone") | not))'
+
+^https:\/\/maicai\.api\.ddxq\.mobi\/guide-service\/productApi\/productDetail\/info\? response-body-json-del data.detail.chatEntry
+
+^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/bottomNavi response-body-json-jq 'del(.data.adId?) | if (.data.bottom_list? | length > 0) then .data.bottom_list |= map(select(.type != "eatwhat")) else . end'
+
+^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/homeFlowDetail response-body-json-jq 'walk(if type == "object" and has("list") then .list |= map(if type == "object" and has("multi_advertise_data_list") then del(.multi_advertise_data_list) else . end) else . end)'
+
+[MitM]
+hostname= 119.29.29.*, maicai.api.ddxq.mobi, user.api.ddxq.mobi

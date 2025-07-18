@@ -1,0 +1,17 @@
+#!name=Disney+评分
+#!desc=Disney+剧集页显示IMDb / 烂番茄 / 豆瓣评分
+#!openUrl=
+#!author=NobyDa[https://github.com/NobyDa],wish[https://github.com/mist-whisper]
+#!tag=功能增强
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/DisneyRating.png
+#!date=2025-05-26 21:00:00
+
+[Script]
+http-response ^https:\/\/disney\.api\.edge\.bamgrid\.com\/explore\/v\d\.\d\/page\/entity- script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Disney/DisneyRating.js, requires-body=true, tag=Disney+评分
+
+[MITM]
+hostname = disney.api.edge.bamgrid.com
