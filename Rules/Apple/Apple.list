@@ -1,6 +1,7 @@
 # NAME: Apple
-# UPDATED: 2025-07-13
+# UPDATED: 2025-07-20
 
+DOMAIN,gsa.apple.com
 DOMAIN,20-courier.push.apple.com
 DOMAIN,entitlements.itunes.apple.com
 DOMAIN,profile.gc.apple.com
