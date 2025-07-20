@@ -1,14 +1,13 @@
-#!name = WeChat增强
-#!desc = WeChat及微信广告过滤，解锁微信外部链接。\nWeChat用户可在插件内选择分流。
-#!openUrl = 
+#!name=WeChat增强
+#!desc=WeChat及微信广告过滤，解锁微信外部链接。\nWeChat用户可在插件内选择分流。
 #!author = ld2j[https://github.com/LD2J0618],RuCu6[https://github.com/RuCu6],可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md],VirgilClyne,zZPiglet[https://github.com/zZPiglet],wish[https://github.com/mist-whisper],ZenmoFeiShi[https://github.com/ZenmoFeiShi]
-#!tag = 去广告增强
-#!system = iOS iPadOS
-#!system_version = 15
-#!loon_version = 3.2.9(837)
-#!homepage = https://github.com/mist-whisper/Loon/blob/master/README.md
-#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/WeChat.png
-#!date = 2025-05-13 15:17:08
+#!tag=去广告增强
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/WeChat.png
+#!date=2025-07-20 21:12:00
 
 [Rule]
 # 微信公众号广告过滤
@@ -21,7 +20,6 @@ DOMAIN,wxsnsdythumb.wxs.qq.com,REJECT
 DOMAIN,ads-shopping.shouqianba.com,REJECT
 # 猫眼电影
 DOMAIN,ad.maoyan.com,REJECT
-
 DOMAIN, e.jparking.cn, REJECT
 
 # WeChatpay
@@ -30,6 +28,8 @@ DOMAIN,epay.ahrcu.com,DIRECT
 DOMAIN,mixpay.wechat.com,DIRECT  
 
 # 使用参数中的 Proxy 策略组
+DOMAIN,dns.weixin.qq.com,PROXY
+DOMAIN,dns.weixin.qq.com.cn,PROXY
 DOMAIN,apd-pcdnwxlogin.teg.tencent-cloud.net,PROXY
 DOMAIN,btrace.qq.com,PROXY
 DOMAIN,dldir1.qq.com,PROXY
