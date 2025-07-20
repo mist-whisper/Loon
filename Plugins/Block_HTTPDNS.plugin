@@ -1,14 +1,13 @@
-#!name = HTTPDNS拦截器
-#!desc = 拦截常见的HTTPDNS服务，以确保这些请求都能够在Loon的DNS框架下工作。
-#!openUrl = 
-#!author = 可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md], VirgilClyne[https://github.com/VirgilClyne]
-#!tag = DNS
-#!system = iOS iPadOS
-#!system_version = 15
-#!loon_version = 3.2.9(837)
-#!homepage = https://github.com/luestr/ProxyResource/blob/main/README.md
-#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/Other_icon/120px/HTTPDNS.png
-#!date = 2025-05-13 21:58:49
+#!name=HTTPDNS拦截器
+#!desc=拦截常见的HTTPDNS服务，以确保这些请求都能够在Loon的DNS框架下工作。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md], VirgilClyne[https://github.com/VirgilClyne]
+#!tag=DNS
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/luestr/ProxyResource/blob/main/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/Other_icon/120px/HTTPDNS.png
+#!date=2025-07-20 21:15:00
 
 [Rule]
 DOMAIN, yyapp-httpdns.gslb.yy.com, REJECT
@@ -28,8 +27,6 @@ DOMAIN, dig.bdurl.net, REJECT
 DOMAIN, dig.zjurl.cn, REJECT
 AND, ((DOMAIN-KEYWORD, tnc), (AND, ((OR, ((DOMAIN-KEYWORD, -bjlgy), (DOMAIN-KEYWORD, -alisc), (DOMAIN-KEYWORD, -aliec), (DOMAIN-KEYWORD, -alisg))), (OR, ((DOMAIN-SUFFIX, snssdk.com), (DOMAIN-SUFFIX, isnssdk.com), (DOMAIN-SUFFIX, toutiaoapi.com), (DOMAIN-SUFFIX, bytedance.com), (DOMAIN-SUFFIX, zijieapi.com)))))), REJECT // 字节的HTTPDNS服务，以及控制客户端的QUIC启用。
 
-DOMAIN, dns.weixin.qq.com, REJECT
-DOMAIN, dns.weixin.qq.com.cn, REJECT
 DOMAIN, aedns.weixin.qq.com, REJECT
 DOMAIN, paydns.wechatpay.cn, REJECT
 IP-CIDR, 39.156.140.30/32, REJECT, no-resolve
