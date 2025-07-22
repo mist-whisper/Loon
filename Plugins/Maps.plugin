@@ -1,15 +1,14 @@
-#!name =  iRingo: 🗺️ Maps
-#!desc = 自定义 Maps app\n添加国际版功能\n自定义服务版本
-#!openUrl = 
-#!author = VirgilClyne[https://github.com/VirgilClyne]
-#!tag =  iRingo
-#!system = iOS iPadOS macOS
-#!system_version = 15
-#!loon_version = 3.2.9(837)
-#!version = 4.2.2
-#!homepage = https://NSRingo.github.io/guide/GeoServices/maps
-#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/iRingo/maps-128x128.png
-#!date = 2024-12-10 16:10:46
+#!name= iRingo: 🗺️ Maps
+#!desc=自定义 Maps app\n添加国际版功能\n自定义服务版本
+#!author=VirgilClyne[https://github.com/VirgilClyne]
+#!tag= iRingo
+#!system=iOS iPadOS macOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!version=4.2.2
+#!homepage=https://NSRingo.github.io/guide/GeoServices/maps
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/iRingo/maps-128x128.png
+#!date=2024-12-10 16:10:46
 
 [Argument]
 GeoManifest.Dynamic.Config.CountryCode = select,"CN","AUTO","HK","TW","SG","US","JP","AU","GB","KR","CA","IE",tag=[动态配置] 资源清单的国家或地区代码,desc=此选项影响“地图”整体配置内容，包括以下的地图功能与服务。
