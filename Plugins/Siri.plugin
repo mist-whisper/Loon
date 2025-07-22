@@ -1,15 +1,14 @@
-#!name =  iRingo: ⭕ Siri
-#!desc = iOS 18⬆️ & macOS 15⬆️\n全面自定义「Siri 请求」功能。\n⚠️ 不含自定义「Siri 建议」功能。
-#!openUrl = 
+#!name= iRingo: ⭕ Siri
+#!desc=iOS 18⬆️ & macOS 15⬆️\n全面自定义「Siri 请求」功能。\n⚠️ 不含自定义「Siri 建议」功能。
 #!author = VirgilClyne[https://github.com/VirgilClyne]
-#!tag =  iRingo
-#!system = iOS iPadOS macOS
-#!system_version = 15
-#!loon_version = 3.2.9(837)
-#!version = 4.2.7
-#!homepage = https://NSRingo.github.io/guide/Siri/siri
-#!icon = https://raw.githubusercontent.com/mist-whisper/Icon/master/iRingo/siri-128x128.png
-#!date = 2024-12-24 04:25:06
+#!tag= iRingo
+#!system=iOS iPadOS macOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!version=4.2.7
+#!homepage=https://NSRingo.github.io/guide/Siri/siri
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/iRingo/siri-128x128.png
+#!date=2024-12-24 04:25:06
 
 [Argument]
 CountryCode = select,"US","OFF","AUTO","CN","HK","TW","SG","JP","AU","GB","KR","CA","IE",tag=国家或地区代码,desc=不同国家或地区提供的内容或有差别，此选项同时会影响分配给您不同地区的 Siri 服务器。
