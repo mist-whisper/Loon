@@ -1,7 +1,7 @@
 # NAME: Global
 # AUTHOR: Sukka Edward
 # HOMEPAGE: https://ruleset.skk.moe/List/non_ip/global.conf
-# UPDATED: 2025-07-21
+# UPDATED: 2025-07-22
 # This file contains rules for services that are not available inside the Mainland China.
 
 #DOMAIN,this_ruleset_is_made_by_sukkaw.ruleset.skk.moe
@@ -17,8 +17,6 @@ DOMAIN,openpanel.follow.is
 DOMAIN,webp.follow.is
 DOMAIN,api.follow.is
 DOMAIN,www.uscardforum.com
-DOMAIN,missav.ai
-DOMAIN,missav.ws
 DOMAIN,1lib.sk
 DOMAIN,addons.mozilla.org
 DOMAIN,ees.elsevier.com
@@ -26,6 +24,9 @@ DOMAIN,ccmdl.adobe.com
 DOMAIN,media.steampowered.com
 DOMAIN,wego.here.com
 
+DOMAIN-SUFFIX,missav.fans
+DOMAIN-SUFFIX,missav.ai
+DOMAIN-SUFFIX,missav.ws
 DOMAIN-SUFFIX,bitwarden.net
 DOMAIN-SUFFIX,theinitium.com
 DOMAIN-SUFFIX,tailwindcss.com
