@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BlockAds.png
-#!date=2025-07-23 22:40:00
+#!date=2025-07-23 23:40:00
 
 [Rule]
 # 12306
@@ -201,9 +201,9 @@ DOMAIN-SUFFIX,appiersig.com,REJECT
 # ^https:\/\/api\.xiaoyuzhoufm\.com\/v1\/membership\/platform reject-dict
 
 # 可莉资源预览
-http-request ^https:\/\/(?!(pluginhub\.))((.*\.)?kelee\.one)(\/.*)? header-replace User-Agent Surge iOS/9527
-http-response ^https:\/\/(?!(pluginhub\.))((.*\.)?kelee\.one)(\/.*)? header-add content-disposition inline
-http-response ^https:\/\/(?!(pluginhub\.))((.*\.)?kelee\.one)(\/.*)? header-replace content-type text/plain; charset=utf-8
+^https:\/\/(?!(pluginhub\.))((.*\.)?kelee\.one)(\/.*)? header-replace User-Agent Surge\x20iOS/9527
+^https:\/\/(?!(pluginhub\.))((.*\.)?kelee\.one)(\/.*)? response-header-add content-disposition inline
+^https:\/\/(?!(pluginhub\.))((.*\.)?kelee\.one)(\/.*)? response-header-replace content-type text/plain;\x20charset=utf-8
 
 # 爱思助手
 ^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml reject
