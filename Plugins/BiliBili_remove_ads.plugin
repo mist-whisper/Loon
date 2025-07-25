@@ -58,7 +58,7 @@ DOMAIN-SUFFIX,chat.bilibili.com,REJECT
 ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? response-body-json-jq '.data.vip |= if . != null and .status == 0 then . + { status: 1, type: 2, due_date: 9005270400000, role: 15 } else . end'
 
 [Script]
-http-request ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile$ script-path=https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/bilibili.protobuf.response.js, requires-body=true, binary-body-mode=true, enable={airborne}, argument=[{logLevel}], tag=空降助手
+http-request ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile$ script-path=https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/bilibili.protobuf.request.js, requires-body=true, binary-body-mode=true, enable={airborne}, argument=[{logLevel}], tag=空降助手
 
 http-response ^https:\/\/live\.bilibili\.com\/blackboard/era/.+\.html\?is_live_half_webview=1 script-path=https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/webpage.bilibili.js, requires-body=true, tag=bilibili去广告
 
