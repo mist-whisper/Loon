@@ -11,8 +11,8 @@
 
 [Argument]
 showUpList=select, "auto", "true", "false", tag=[动态]中[最常访问]的显示方式, desc=auto：仅当列表中存在直播状态时显示；true：始终显示；false：始终隐藏。
-filterTopReplies=switch, "false", "true", tag=移除评论区置顶广告, desc=移除评论区置顶广告
-airborne=switch, "false", "true", tag=空降助手, desc=用于跳过视频中的广告
+filterTopReplies=switch, false, true, tag=移除评论区置顶广告, desc=移除评论区置顶广告
+airborne=switch, false, true, tag=空降助手, desc=用于跳过视频中的广告
 logLevel=select, "off", "error", "warn", "info", "debug", tag=日志等级, desc=脚本的日志输出等级
 
 [Rule]
