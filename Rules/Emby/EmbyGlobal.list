@@ -1,0 +1,16 @@
+# NAME: EmbyGlobal
+# AUTHOR: wish
+# UPDATED: 2025-07-08
+
+DOMAIN,emby.heisi.org
+DOMAIN,pub1.emby.wtf
+DOMAIN,pub1.term.wtf
+DOMAIN,pub2.emby.wtf
+DOMAIN,pub2.term.wtf
+DOMAIN,pub3.emby.wtf
+DOMAIN,pub3.term.wtf
+
+DOMAIN-SUFFIX,emby.wtf
+
+DOMAIN-KEYWORD,wtf
+DOMAIN-KEYWORD,emby.wtf
