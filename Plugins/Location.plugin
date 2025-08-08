@@ -1,0 +1,24 @@
+#!name= iRingo: 📍 Location
+#!desc=自定义「定位服务」\n通过「基于网络的地区检测」结果始终为用户设置的地区。
+#!author=VirgilClyne[https://github.com/VirgilClyne]
+#!tag= iRingo
+#!system=iOS iPadOS macOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://NSRingo.github.io/guide/GeoServices/location
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/iRingo/ios_location_services-250x250.jpg
+#!date=2024-12-05 08:49:35
+
+[Argument]
+PEP.GCC = select,"US","AUTO","HK","TW","SG","US","JP","AU","GB","KR","CA","IE",tag=[地区检测] 地理国家或地区代码,desc=要更改为的地区或国家，此选项影响Wi-Fi或有线网络下国家和地区检测的结果。
+
+[Rule]
+# 📍 Country Code
+DOMAIN,gspe1-ssl.ls.apple.com,DIRECT
+
+[Script]
+# 📍 Country Code
+http-response ^https?:\/\/gspe1-ssl\.ls\.apple\.com\/pep\/gcc script-path=https://github.com/NSRingo/GeoServices/releases/latest/download/response.bundle.js, requires-body=1, tag=📍 Location.pep.gcc.response, argument=[{PEP.GCC}]
+
+[MITM]
+hostname=gspe1-ssl.ls.apple.com

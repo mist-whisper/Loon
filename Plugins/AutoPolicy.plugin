@@ -1,0 +1,13 @@
+#!name=自动策略切换
+#!desc=网络变化时自动根据设定执行策略组切换。
+#!author=Peng-YM[https://github.com/Peng-YM]
+#!tag=优化增强
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/WiFi.png
+#!date=2025-03-30 21:50:17
+
+[Script]
+network-changed script-path=https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tools/AutoPolicy/auto-policy.js

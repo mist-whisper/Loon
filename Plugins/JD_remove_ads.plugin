@@ -1,0 +1,34 @@
+#!name=京东去广告
+#!desc=移除京东开屏广告，精简我的页面产品推广。
+#!author=RuCu6[https://github.com/RuCu6], githubdulong[https://github.com/githubdulong], wish[https://github.com/mist-whisper]
+#!tag=去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/JD.png
+#!date=2025-07-27 15:23:00
+
+[Argument]
+# manmanbuy_enable = switch,true,false,tag=账号捕获,desc=慢慢买 CK 脚本启停
+
+[Rule]
+URL-REGEX, "^http:\/\/\w{32}\.jddebug\.com\/diagnose\?", REJECT
+
+[Rewrite]
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) reject-dict
+
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=basicConfig response-body-json-replace data.JDMessage.socketmonitor.isSocketEstablishedAhead 0 data.JDMessage.socketmonitor.isSocketReport 0 data.JDHttpToolKit.httpdns.httpdns 0
+
+^https?:\/\/m\.360buyimg\.com\/mobilecms\/s1125x2436_jfs reject-200
+
+[Script]
+http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path = https://raw.githubusercontent.com/mist-whisper/Script/master/JD/JD_remove_ads.js, requires-body = true, tag = 移除京东广告
+
+# apapia-sqk-weblogic.manmanbuy.com,
+# http-request ^https?:\/\/apapia-sqk-weblogic\.manmanbuy\.com\/baoliao\/center\/menu$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/JD/JD_Price.js,requires-body=true,timeout=60,tag=账号捕获, enable={manmanbuy_enable}
+
+# http-response ^https?:\/\/in\.m\.jd\.com\/product\/graphext\/\d+\.html script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/JD/JD_Price.js,requires-body=true,timeout=60,tag=京东比价
+
+[MITM]
+hostname=in.m.jd.com, m.360buyimg.com
