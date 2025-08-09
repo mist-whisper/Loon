@@ -10,7 +10,7 @@
 #!date=2025-06-01 19:00:00
 
 [Argument]
-xhs_sticker=switch, true, false, tag=表情包图片模式,desc=是否开启小红书表情包保存开关
+xhs_sticker=switch, true, false, tag=表情包图片模式,desc=是否开启小红书表情包图片模式开关
 
 [Rule]
 AND, ((PROTOCOL, QUIC), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
