@@ -1,0 +1,27 @@
+#!name=彩云天气去广告
+#!desc=移除移除首页推广、弹窗、悬浮窗、底栏天气助手和工具箱入口，移除我的页面广告横幅。解锁SVIP功能。
+#!author=RuCu6[https://github.com/RuCu6]
+#!tag=解锁去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://pluginhub.kelee.one
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/ColorfulClouds.png
+#!date=2025-07-28 21:27:00
+
+[Rule]
+DOMAIN, abyss.cyapi.cn, REJECT
+DOMAIN, ad.cyapi.cn, REJECT
+DOMAIN, gather.colorfulclouds.net, REJECT
+
+[Rewrite]
+^https:\/\/biz\.cyapi\.cn\/(p\/v1\/entries|p\/v1\/trial_card\/info|v2\/product) reject-dict
+^https:\/\/starplucker\.cyapi\.cn\/v3\/(config\/cypage\/\w+\/conditions|notification\/message_center|operation\/homefeatures) reject-dict
+
+[Script]
+http-request ^https:\/\/wrapper\.cyapi\.cn\/v1\/(nafp\/origin_images|satellite)\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/ColorfulClouds/ColorfulCloudsWeatherPro.js, tag=彩云天气会员
+http-response ^https:\/\/biz\.cyapi\.cn\/(api\/v1\/user_detail|p\/v1\/vip_info|v2\/user) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/ColorfulClouds/ColorfulCloudsWeatherPro.js, requires-body=true, tag=彩云天气会员
+http-response ^https:\/\/(wrapper\.cyapi\.cn|api\.caiyunapp\.com|cdn-w\.caiyunapp\.com)\/v1\/activity\? script-path = https://kelee.one/Resource/JavaScript/ColorfulClouds/ColorfulClouds_remove_ads.js, requires-body=true, tag=彩云天气去广告
+
+[MitM]
+hostname=biz.cyapi.cn, starplucker.cyapi.cn, api.caiyunapp.com, cdn-w.caiyunapp.com, *.cyapi.cn

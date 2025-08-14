@@ -1,0 +1,13 @@
+#!name=节点信息查询
+#!desc=节点IP，服务商，国家，时区，经纬度，货币查询
+#!author=deezertidal[https://github.com/deezertidal]
+#!tag=优化增强
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://pluginhub.kelee.one
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/Other_icon/Domestic.png
+#!date=2024-07-05 20:25:57
+
+[Script]
+generic script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Tools/Geolocation/IP-API.js,tag=节点信息查询,img-url= https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Domestic.png,timeout=10
