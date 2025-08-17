@@ -285,7 +285,7 @@ DOMAIN, switch.cup.com.cn, REJECT
 ^https:\/\/api\.xiaoyuzhoufm\.com\/v\d\/ai reject-dict
 # 移除小宇宙搜索框内容
 ^https:\/\/api\.xiaoyuzhoufm\.com\/v\d\/search\/get reject-dict
-^https?:\/\/api\.xiaoyuzhoufm\.com\/v\d\/category reject-dict
+^https:\/\/api\.xiaoyuzhoufm\.com\/v1\/category\/list-daily reject-dict
 # 会员横幅设为不可点击
 # ^https:\/\/api\.xiaoyuzhoufm\.com\/v1\/membership\/platform reject-dict
 
