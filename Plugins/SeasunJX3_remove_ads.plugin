@@ -10,7 +10,7 @@
 #!date=2025-05-13 15:17:08
 
 [General]
-real-ip=*-update.xoyocdn.com, xg-flow.xoyo.com
+real-ip=*-update.xoyocdn.com, xg-flow.xoyo.com, jx3.xoyo.com
 
 [Rewrite]
 ^https:\/\/jx3comm\.xoyocdn\.com\/jx3gc\/zhcn\/login_ad\/WebCareer\/WebCareerTab\.txt reject
