@@ -1,0 +1,25 @@
+#!name=谷歌增强
+#!desc=将Google搜索重定向至.com域名，如遇频繁跳转请禁用本插件。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md],wish[https://github.com/mist-whisper]
+#!tag=功能增强
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Google.png
+#!date=2025-05-31 16:46:00
+
+[Argument]
+# scriptEngine=select,"auto","webview","jsc",tag=脚本引擎,desc=选择脚本引擎
+# regularExpression=input,"^(🇸🇬|🇺🇸)\s.*\d+$",tag=策略正则表达式,desc=输入策略正则表达式
+
+[Rewrite]
+^https?:\/\/(www.)?(g|google)\.cn 307 https://www.google.com
+^https?:\/\/(ditu|maps).google\.cn 307 https://maps.google.com
+
+[Script]
+# hostname = www.google.com*
+# http-response ^https:\/\/www\.google\.com(?:\.[a-z]+|)\/(?:search\?(?:|.+?&)q=|$) requires-body=1,timeout=30,script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Google_Enhance/Google_CAPTCHA.js,argument=[{scriptEngine},{regularExpression}],tag=Google人机验证
+
+[MITM]
+hostname=www.google.cn

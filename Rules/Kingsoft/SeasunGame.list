@@ -1,0 +1,19 @@
+# NAME: Seasun Game
+# AUTHOR: Edward
+# HOMEPAGE: https://github.com/mist-whisper/Loon/blob/master/Rules/Kingsoft/SeasunGame.list
+# UPDATED: 2024-07-07 21:26:43
+# DOMAIN-SUFFIX: 9
+# DOMAIN-KEYWORD: 2
+# TOTAL: 11
+
+DOMAIN-SUFFIX,kingsoft.com
+DOMAIN-SUFFIX,jxfeng.com
+DOMAIN-SUFFIX,jxphone.com
+DOMAIN-SUFFIX,jxsj2sy.com
+DOMAIN-SUFFIX,xoyo.com
+DOMAIN-SUFFIX,xoyobox.com
+DOMAIN-SUFFIX,xoyocdn.com
+DOMAIN-SUFFIX,xsjcs.cn
+DOMAIN-SUFFIX,xsjom.com
+DOMAIN-KEYWORD,xoyo
+DOMAIN-KEYWORD,jxsj
