@@ -1,0 +1,37 @@
+#!name=波点音乐
+#!desc=解锁波点音乐会员，移除一些广告。
+#!author=伟人[https://github.com/WeiGiegie]
+#!tag=解锁去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BodianMusic.png
+#!date=2025-08-30 21:50:00
+
+[Rewrite]
+^https://ad\.tencentmusic\.com/config/uni reject-dict
+
+^https:\/\/bd-api\.kuwo\.cn\/api\/(play|service|advert)\/advert\/ reject-dict
+
+^https:\/\/bd-api\.kuwo\.cn\/api\/popup\/ reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/pay\/vip\/invitation\/assist\/popup\? reject-dict
+
+^https:\/\/bd-api\.kuwo\.cn\/api\/ucenter\/vip\/give\/config\? reject-dict
+
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/banner\/ reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/home\/module\?.*&moduleId=6 reject-dict
+
+^https:\/\/bd-api\.kuwo\.cn\/api\/pay\/vip\/lowPriceText\? reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/global\/config\/vipEnter\? reject-dict
+
+^https:\/\/bd-api\.kuwo\.cn\/api\/search\/topic\/word reject-dict
+
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/home\/index response-body-json-jq '.data.moduleList |= map(select(.type != 8 and .type != 5 and .type != 1 and .type != 9 and .type != 6 and .type != 4))'
+
+
+[Script]
+http-response ^https?:\/\/bd-api\.kuwo\.cn\/api\/(ucenter\/users\/pub|play\/music\/v2\/(audioUrl|checkRight)|service\/home\/module|pay\/vip\/lowPriceText) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js, requires-body=true, timeout=60, tag=波点音乐
+
+[MITM]
+hostname=bd-api.kuwo.cn, *.kuwo.*, h5app.kuwo.cn, bodianimgcdn.kuwo.cn, ad.tencentmusic.com
