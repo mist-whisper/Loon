@@ -1,0 +1,17 @@
+# 本项目内容由 https://github.com/luestr 基于原项目修改而来，在此表示感谢。
+# NAME: Speedtest
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2024-07-03 16:16:08
+# DOMAIN: 1
+# DOMAIN-KEYWORD: 1
+# DOMAIN-SUFFIX: 4
+# USER-AGENT: 1
+# TOTAL: 7
+DOMAIN,speed.dler.io
+DOMAIN-SUFFIX,fast.com
+DOMAIN-SUFFIX,ooklaserver.net
+DOMAIN-SUFFIX,speed.cloudflare.com
+DOMAIN-SUFFIX,speed.dler.io
+DOMAIN-KEYWORD,speedtest
+USER-AGENT,SpeedTest*

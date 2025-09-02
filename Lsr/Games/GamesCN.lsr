@@ -1,0 +1,16 @@
+# NAME: GamesCN
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-02-08
+# DOMAIN: 3
+# DOMAIN-KEYWORD: 5
+# TOTAL: 8
+
+DOMAIN,uplaypc-s-ubisoft.cdn.ubi.com
+DOMAIN,ecom-cdn.ubi.com
+DOMAIN,ubi.li
+DOMAIN-KEYWORD,ubistatic2
+DOMAIN-KEYWORD,ubisoft
+DOMAIN-KEYWORD,ubiservices
+DOMAIN-KEYWORD,ubiconnect
+DOMAIN-KEYWORD,ubi

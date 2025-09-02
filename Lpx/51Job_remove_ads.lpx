@@ -1,0 +1,36 @@
+#!name=前程无忧去广告
+#!desc=移除开屏广告、弹窗、信息流推广、职位页面推广和各类横幅推广。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://pluginhub.kelee.one
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/51Job.png
+#!date=2025-07-11 17:40:27
+
+[Rewrite]
+^https:\/\/appapi\.51jobapp\.com\/api\/market\/get_launch\.php\? reject-dict
+
+^https:\/\/cupid\.51jobapp\.com\/open\/operation\/get\/latest\/banner-list\? reject-dict
+
+^https:\/\/cupid\.51jobapp\.com\/open\/noauth\/recommend\/job-tab-dynamic\? response-body-json-del resultbody.adsTabFeeds
+
+
+^https:\/\/cupid\.51jobapp\.com\/open\/51job-activities\/secJob\/queryHomeSecondConfigV2\? reject-dict
+
+^https:\/\/cupid\.51jobapp\.com\/open\/noauth\/jobs\/detail\/sesame-competitive\/ reject-dict
+
+^https:\/\/cupid\.51jobapp\.com\/open\/noauth\/jobs\/job-detail\/user-rights\? reject-dict
+
+^https:\/\/cupid\.51jobapp\.com\/open\/user-task\/user\/task\/ response-body-json-del resultbody.availableTaskList
+
+^https:\/\/cupid\.51jobapp\.com\/open\/resume\/strategy\/resume-build\? reject-dict
+
+^https:\/\/cupid\.51jobapp\.com\/launch-hub\/open\/noauth\/popUp\/ reject-dict
+^https:\/\/cupid\.51jobapp\.com\/launch-hub\/open\/noauth\/popUp\/getHomePagePopUp\? reject-dict
+
+^https:\/\/cupid\.51jobapp\.com\/open\/tab\/good-job\/modules\? response-body-json-del resultbody.bannerList
+
+[MitM]
+hostname=appapi.51jobapp.com, cupid.51jobapp.com

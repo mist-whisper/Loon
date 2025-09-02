@@ -1,0 +1,25 @@
+#!name=新闻会员
+#!desc=解锁几个新闻平台会员
+#!author=wish[https://github.com/mist-whisper]
+#!tag=会员解锁
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Blankbook.png
+#!date=2025-06-25 21:33:00
+
+[Argument]
+InitiumMedia=switch, "false", "true", tag=解锁端传媒会员, desc=
+FTchinese=switch, "false", "true", tag=解锁FT中文网, desc=
+
+[Rewrite]
+^https?:\/\/ftmailbox\.cn\/ad_impression\/.+ - reject-200
+
+[Script]
+http-response ^https?:\/\/app\.theinitium\.com\/subs\/initiummedia_subs\/verify_subscription script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/InitiumMedia/InitiumMedia.js, requires-body=true, timeout=60, tag=端传媒会员, enable={InitiumMedia}
+
+http-response ^https?:\/\/.*\.cloudfront\.net\/index\.php\/jsapi\/(paywall|get_story_more_info) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/FTchinese/FTchinese.js, requires-body=true, timeout=60, tag=FT中文网, enable={FTchinese}
+
+[MITM]
+hostname=app.theinitium.com, *.cloudfront.net, ftmailbox.cn

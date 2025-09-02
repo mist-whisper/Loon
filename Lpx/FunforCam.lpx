@@ -1,0 +1,18 @@
+#!name=方弗相机会员
+#!desc=解锁方弗相机会员
+#!author=骨钉[https://github.com/Guding88]
+#!tag=解锁
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/FunforCam.png
+#!date=2024-06-12 12:20
+
+[Script]
+http-response ^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/FunforCam/FunforCam.js, requires-body=true, timeout=60, tag=方弗相机会员
+
+http-request ^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/FunforCam/FunforCam.js, timeout=60, tag=方弗相机会员
+
+[MITM]
+hostname=api.revenuecat.com

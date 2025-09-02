@@ -1,0 +1,20 @@
+#!name=Telegram跳转第三方客户端
+#!desc=Telegram外链直接跳转至第三方客户端，自行选择跳转至Swiftgram还是Turrit。
+#!author=秦城二院彭医生[https://github.com/dcpengx],wish[https://github.com/mist-whisper]
+#!tag=功能增强
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/TgRedirect.png
+#!date=2025-03-26
+
+
+[argument]
+jump = select,"Swiftgram","Turrit",tag = 指定跳转客户端,desc = 选择跳转到哪个第三方tg
+
+[Script]
+http-response (https:\/\/)?t\.me\/(.+) script-path=https://raw.githubusercontent.com/dcpengx/Loon/main/JavaScript/tg-redirect.js,tag = telegram-redirect,requires-body = false,timeout = 10,binary-body-mode = false,argument = [{jump}],enable=true
+
+[MITM]
+hostname=t.me

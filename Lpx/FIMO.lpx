@@ -1,0 +1,16 @@
+#!name=Fimo复古胶片相机会员
+#!desc=解锁Fimo复古胶片相机会员
+#!author=chxm1023[https://github.com/chxm1023]
+#!tag=解锁
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/FIMO.png
+#!date=2024-08-19 14:30
+
+[Script]
+http-response ^https?:\/\/server\.(yoyiapp|zbisq)\.com, script-path=https://raw.githubusercontent.com/mist-whisper/Script/refs/heads/master/FIMO/FIMO.js, requires-body=true, tag=Fimo复古胶片相机会员
+
+[MITM] 
+hostname=server.*.com

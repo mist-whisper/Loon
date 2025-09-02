@@ -1,0 +1,16 @@
+# NAME: EmbyMainland
+# AUTHOR: wish
+# HOMEPAGE: https://github.com/mist-whisper/Loon/blob/master/Rules/Emby/EmbyMainland.list
+# UPDATED: 2025-07-02
+
+DOMAIN,ch.feiyue.lol
+DOMAIN,yhemby.top
+DOMAIN,7777777.buzz
+DOMAIN,cf.imetyou.top
+DOMAIN,music.mefun.org
+
+DOMAIN-KEYWORD,temby
+
+DOMAIN-SUFFIX,285286.xyz
+
+IP-CIDR,193.122.114.13/32

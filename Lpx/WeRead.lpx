@@ -1,0 +1,19 @@
+#!name=微信读书会员
+#!desc=解锁微信读书付费会员。关闭插件重新登陆后再开启插件。
+#!author=WeiGiegie[https://github.com/WeiGiegie]
+#!tag=解锁
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/WeRead.png
+#!date=2025-04-02
+
+[Rewrite]
+^https://i\.weread\.qq\.com/updateConfig - reject
+
+[Script]
+http-response ^https?:\/\/i.weread.qq.com\/(login|pay\/balance|user\/profile).*$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/WeRead/WeRead.js, requires-body=true, timeout=60, tag=微信读书付费会员
+
+[MITM]
+hostname=i.weread.qq.com

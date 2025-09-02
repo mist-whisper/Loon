@@ -1,0 +1,11 @@
+# NAME: REDnote
+# AUTHOR: blackmatrix7
+# HOMEPAGE: https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Loon/XiaoHongShu/XiaoHongShu.list
+# UPDATED: 2024-07-03 16:17:40
+# DOMAIN-SUFFIX: 4
+# TOTAL: 4
+
+DOMAIN-SUFFIX,fengkongcloud.com
+DOMAIN-SUFFIX,xhscdn.com
+DOMAIN-SUFFIX,xhscdn.net
+DOMAIN-SUFFIX,xiaohongshu.com

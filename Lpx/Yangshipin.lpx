@@ -1,0 +1,22 @@
+#!name=央视频去广告
+#!desc=去除赛事直播前的广告。
+#!author=Yu9191[https://github.com/Yu9191],wish[https://github.com/mist-whisper]
+#!tag=去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/YangShiPin.png
+#!date=2025-07-12 00:20:00
+
+[Rewrite]
+# 解锁[电视]内会员 如果登录提示错误的话 手动屏蔽下面这条
+# &guid=[\w-]+&app_version=[\d\.]+&spadseg=\d&userid=(\d*)? &guid=f066be2cdf1c4f4893eb818de454313a&app_version=3.0.0.23522&spadseg=3&userid=234090757 302
+# > 央视频去广告
+^https?:\/\/cdn\.cmgadx\.com\/sdk\/pool\/.+\.json - reject-dict
+
+[Script]
+http-request ^http:\/\/(liveinfo|bkliveinfo|playvv)\.ysp\.cctv\.cn\/(playvinfo\?.+|.*) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Yangshipin/Yangshipin_remove_ads.js, timeout=60, tag=央视频去广告
+
+[MITM]
+hostname=*.ysp.cctv.cn, cdn.cmgadx.com

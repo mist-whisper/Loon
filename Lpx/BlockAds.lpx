@@ -1,0 +1,344 @@
+#!name=广告必须死
+#!desc=移除一些小广告，优化一些小功能。
+#!author=RuCu6[https://github.com/RuCu6],fishdown[https://github.com/fishdown],wish[https://github.com/mist-whisper],Repcz[https://github.com/Repcz],kelv1n1n[https://github.com/kelv1n1n],ZenmoFeiShi[https://github.com/ZenmoFeiShi],fmz200[https://github.com/fmz200],可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告增强
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BlockAds.png
+#!date=2025-08-20 14:00:00
+
+[Rule]
+# 12306
+DOMAIN, ad.12306.cn, DIRECT
+
+# 阿里巴巴
+DOMAIN-SUFFIX, ut.taobao.com, REJECT
+DOMAIN, dns.alidns.com, REJECT
+
+# 阿里云盘
+IP-CIDR, 203.107.1.1/24, REJECT, no-resolve
+
+# 安全浏览限制解除
+DOMAIN-KEYWORD, safebrowsing., REJECT
+DOMAIN-SUFFIX, u3.ucweb.com, REJECT
+DOMAIN, lookup.api.bsb.baidu.com, REJECT
+
+# 百度
+DOMAIN-SUFFIX, pos.baidu.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+IP-CIDR, 180.76.76.112/32, REJECT, no-resolve
+IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
+
+# 百度地图
+DOMAIN, afdconf.baidu.com, REJECT
+DOMAIN, lc.map.baidu.com, REJECT
+
+# 饿了么
+AND, ((URL-REGEX, "^http:\/\/.+\/amdc\/mobileDispatch"), (USER-AGENT, "eleme*")), REJECT
+URL-REGEX, "^https?:\/\/elemecdn.com\/.+\/sitemap", REJECT
+URL-REGEX, "^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4}", REJECT
+URL-REGEX, "^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4}", REJECT
+URL-REGEX, "^https?:\/\/cube\.elemecdn\.com\/\w\/\w{2}\/\w+mp4\.mp4\?", REJECT
+URL-REGEX, "^https?:\/\/www1\.elecfans\.com\/www\/delivery\/", REJECT
+
+# 飞猪旅行
+AND, ((URL-REGEX, "^http:\/\/.+\/amdc\/mobileDispatch"), (USER-AGENT, "%E9%A3%9E%E7%8C%AA%E6%97%85%E8%A1%8C*")), REJECT
+
+# 工商银行
+DOMAIN-SUFFIX, mall.icbc.com.cn, REJECT
+DOMAIN, pageviewp.icbc.com.cn, REJECT
+
+# 韩剧TV
+DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, adsmind.ugdtimg.com, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+DOMAIN, v2mi.gdt.qq.com, REJECT
+DOMAIN, da.bridgeturbo.com, REJECT
+DOMAIN, adx-os.bridgeturbo.com, REJECT
+DOMAIN, adx-bj.anythinktech.com, REJECT
+
+# 航旅纵横
+URL-REGEX, "^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native", REJECT
+
+# 盒马
+AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, Hema4iPhone*)), REJECT
+
+# 建设银行
+DOMAIN-KEYWORD, adv.ccb.com, REJECT
+
+# 蓝奏云
+DOMAIN, statics.woozooo.com, REJECT
+
+# Missav
+DOMAIN-SUFFIX, creative.myavlive.com, REJECT
+DOMAIN-SUFFIX, trackwilltrk.com, REJECT
+DOMAIN-SUFFIX, tsyndicate.com, REJECT
+
+# 美团
+IP-CIDR, 103.37.155.60/32, REJECT, no-resolve
+
+# Outlook
+DOMAIN, acdn.adnxs.com, REJECT
+DOMAIN, mediation.adnxs.com, REJECT
+DOMAIN, sin3-ib.adnxs.com, REJECT
+
+# Talkatone
+DOMAIN-SUFFIX,gum.criteo.com,REJECT
+DOMAIN-SUFFIX,ads.inmobi.com,REJECT
+DOMAIN-SUFFIX,cdn2.inner-active.mobi,REJECT
+DOMAIN-SUFFIX,sdk-dnt.ad.smaato.net,REJECT
+DOMAIN-SUFFIX,sdk-events.inner-active.mobi,REJECT
+DOMAIN-SUFFIX,ow.pubmatic.com,REJECT
+DOMAIN-SUFFIX,bidder.criteo.com,REJECT
+DOMAIN-SUFFIX,googleads.g.doubleclick-cn.net,REJECT
+DOMAIN-SUFFIX,wv.inner-active.mobi,REJECT
+DOMAIN-SUFFIX,c.amazon-adsystem.com,REJECT
+DOMAIN-SUFFIX,googleads.g.doubleclick-cn.net,REJECT
+DOMAIN-SUFFIX,cr.adsappier.com,REJECT
+DOMAIN-SUFFIX,ads.inmobi.com,REJECT
+DOMAIN-SUFFIX,tappx.com,REJECT
+DOMAIN-SUFFIX,criteo.com,REJECT
+DOMAIN-SUFFIX,pubmatic.com,REJECT
+DOMAIN-SUFFIX,smaato.net,REJECT
+DOMAIN-SUFFIX,amazon-adsystem.com,REJECT
+# DOMAIN-KEYWORD,googleads,REJECT
+DOMAIN-SUFFIX,adsappier.com,REJECT
+DOMAIN-SUFFIX,appier.net,REJECT
+DOMAIN-SUFFIX,appiersig.com,REJECT
+
+# 迅雷解除版权限制
+#DOMAIN, hub5btmain.v6.shub.sandai.net, REJECT
+#DOMAIN, hub5emu.v6.shub.sandai.net, REJECT
+#DOMAIN, hub5idx.v6.shub.sandai.net, REJECT
+
+# 云闪付开屏广告
+DOMAIN, ads.95516.com, REJECT
+DOMAIN, switch.cup.com.cn, REJECT
+
+[Rewrite]
+# Avple跳转弹窗
+ ^https:\/\/asserts\.avple\.tv\/file\/avple-images\/ad\.js reject
+
+# 阿里云盘
+^https:\/\/api\.alipan\.com\/adrive\/v1\/file\/getTopFolders reject-dict
+^https:\/\/member\.alipan\.com\/v2\/activity\/sign_in_luckyBottle reject-dict
+
+# 阿里巴巴
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources reject-dict
+^https:\/\/heic\.alicdn\.com\/imgextra\/i\d\/\d*\/?[\w!]+-\d-(?:octopus|tps-1125-1602|tps-1080-1920)\.(?:jpg|png)_(?:1\d{3}|9\d{2})x(?:1\d{3}|9\d{2})q[59]0 reject-dict
+^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad reject-dict
+^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) reject-dict
+
+# 爱思助手
+^https:\/\/list-app-m\.i4\.cn\/(?:adclickcb|getHotSearchList|getopfstadinfo)\.xhtml reject
+
+# 百词斩开屏广告
+^http:\/\/advertise\.baicizhan\.com\/rpc\/advertise\/get_startup_ad reject-dict
+
+# 百度云
+^https:\/\/pan\.baidu\.com\/(?:act\/|aipic\/|aisearch\/|api\/getsyscfg\?|rest\/) reject-dict
+
+# Dsenrp55
+^https:\/\/dsenrp55\.com\/tabbar[356]$ 302 https://dsenrp55.com/tabbar1
+^https:\/\/dsenrp55\.com\/tabbar response-body-replace-regex </head> </head><style>.swiperBox,.adBox,.ad,.adItem,.start-page-container,.n-container,.intercept-18,div.van-tabbar-item:first-of-type,div.van-tabbar-item:last-of-type{display:none!important}img.back{margin:40px!important}</style>
+
+# 大麦
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.wireless\.home\.welcome reject-200
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.popup\.get reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i1\/.*-tps-1080-1920.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i2\/.*-tps-1080-1920.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i3\/.*-tps-1080-1920.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i4\/.*-tps-1080-1920.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i1\/.*-tps-1125-2436.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i2\/.*-tps-1125-2436.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i3\/.*-tps-1125-2436.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i4\/.*-tps-1125-2436.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i1\/.*-tps-900-1350.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i2\/.*-tps-900-1350.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i3\/.*-tps-900-1350.jpg reject-200
+^https?:\/\/img\.alicdn\.com\/imgextra\/i4\/.*-tps-900-1350.jpg reject-200
+
+# 豆瓣
+^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
+^https:\/\/(?:img|qnmob)3\.doubanio\.com\/view\/dale-online\/dale_ad\/public\/\w+ reject-dict
+^https?:\/\/api\.douban\.com\/v\d\/app_ads\/ reject-dict
+^https?:\/\/api\.douban\.com\/b.*\/common_ads\?.* reject-dict
+^https?:\/\/img\d\.doubanio\.com\/view\/dale-online\/dale_ad\/ reject
+^https?:\/\/frodo\.douban\.com\/api\/v2\/movie\/banner reject
+^https?:\/\/erebor\.douban\.com\/count\/\?ad= reject
+
+# 饿了么
+^https?:\/\/elemecdn\.com\/.+\/sitemap reject
+^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/640\/h\/\d{3,4} reject
+^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/750\/h\/\d{3,4} reject
+^https?:\/\/fuss10\.elemecdn\.com\/.+?\.mp4 reject-img
+^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_1\d{3},h_2\d{3}\/format,webp\/ reject
+^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_6\d{2},h_8\d{2}\/format,webp\/ reject
+^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{3},h_\d{4}\/format,webp\/ reject
+^https?:\/\/cube\.elemecdn\.com\/\w\/\w{2}\/\w+mp4\.mp4\? reject
+^https?:\/\/www1\.elecfans\.com\/www\/delivery\/ reject
+^https?:\/\/(nr-op|cube)\.elemecdn\.com\/.+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{4,},h_\d{4,}\/($|format,webp\/$) reject
+^https:\/\/cube\.elemecdn\.com\d\w{2}\/\w{32}\.(png|gif)\?x-oss-process=image\/resize,m_fill,w_9\d{2},h_d{3}\/format,webp\/ reject
+^https:\/\/nr-op\.elemecdn\.com\/image\/mussel-\d+\.(png|gif)\?x-oss-process=image\/resize\,m_fill,w_1\d{2},h_1\d{2}\/ reject
+
+# 飞猪
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.(?:popresource|screen) reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.guide\.guess\.what\.you\.like reject
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources reject-dict
+
+# Github速率限制返回429问题
+# ^https:\/\/(raw|gist)\.githubusercontent\.com\/ header-replace Accept-Language en-us
+^https:\/\/github\.com\/ header-replace Accept-Language en-us
+
+# 韩剧TV
+^https:\/\/mobads\.baidu\.com\/cpro\/ui\/mads\.php reject-dict
+
+# 和风天气
+^https:\/\/hfapp-service\.qweather\.net\/v2\.0\/app\/ad\/list\? reject-dict
+
+# 盒马
+^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysinglepage\/ reject-dict
+
+# 黑料网
+^https?:\/\/[^\/]+\/category\/6\.html$ response-body-replace-regex <style> <style>\x20.video-list\x20>\x20.video-item:nth-of-type(-n+2)\x20{\x20display:none\x20!important}\x20.gotoclick{\x20display:none\x20!important}\x20.modal{\x20display:none\x20!important}\x20.addbox{\x20display:none\x20!important}
+^https?:\/\/[^\/]+\/category\/20\.html$ response-body-replace-regex <style> <style>\x20.video-list\x20>\x20.video-item:nth-of-type(3)\x20{\x20display:none\x20!important}\x20.gotoclick{\x20display:none\x20!important}\x20.modal{\x20display:none\x20!important}\x20.addbox{\x20display:none\x20!important}
+^https:\/\/18hlw\.com response-body-replace-regex <style> <style>\x20.gotoclick{\x20display:none\x20!important}\x20.modal{\x20display:none\x20!important}\x20.addbox{\x20display:none\x20!important}
+^https:\/\/lneuk\.rslsilne\.cc response-body-replace-regex <style> <style>\x20.gotoclick{\x20display:none\x20!important}\x20.modal{\x20display:none\x20!important}\x20.addbox{\x20display:none\x20!important}
+^https:\/\/7054s\.rbcmpeu\.org response-body-replace-regex <style> <style>\x20.gotoclick{\x20display:none\x20!important}\x20.modal{\x20display:none\x20!important}\x20.addbox{\x20display:none\x20!important}
+^https:\/\/d2bkn61acaxm61\.cloudfront\.net response-body-replace-regex <style> <style>\x20.gotoclick{\x20display:none\x20!important}\x20.modal{\x20display:none\x20!important}\x20.addbox{\x20display:none\x20!important}
+
+# 建设银行
+^http:\/\/image1\.ccb\.com\/newsinfo\/eBranch\/check\/(?:nf\/newfin\/activity|po\/poortheme\/activity)\/\w+\.png reject
+# 建行生活外卖(美团)弹窗广告
+^https:\/\/i\.waimai\.meituan\.com\/tsp\/open\/openh5\/home\/rcmd\?set reject-dict
+# 建行生活外卖(美团)横幅广告
+^https:\/\/i\.waimai\.meituan\.com\/openh5\/homepage\/dsp\/resource\? reject-dict
+
+# 交管12123
+^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver reject-dict
+
+# 猫眼
+^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ reject-dict
+^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(?:jpg|png)\?imageMogr2\/thumbnail\/(?:860x0|!165x165|!1049x1169) reject-dict
+
+# 美团 & 美团外卖
+^http:\/\/wmapi\.meituan\.com\/api\/v7\/(?:loadInfo|openscreen|startpicture) reject-dict
+^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg reject-dict
+^https:\/\/img\.meituan\.net\/bizad\/bizad_brandCpt_\d+\.jpg reject-dict
+^https:\/\/s3plus\.meituan\.net\/ocean-blk-index\/index\/blk_conf_\d+\.json reject-dict
+^https:\/\/s3plus\.meituan\.net\/v1\/mss_\w+\/(?:brandcpt-vedio|waimai-alita)\/\w+\.zip$ reject-dict
+
+# 米家
+^https:\/\/home\.mi\.com\/cgi-op\/api\/v1\/recommendation\/(?:banner|carousel\/banners|myTab|openingBanner) reject-dict
+
+# PornHub
+^https:\/\/(?:cn|www)\.pornhub\.com\/_xa\/ads(_batch)?\? reject
+
+# 全家 开屏广告
+^https:\/\/fmapp\.chinafamilymart\.com\.cn\/api\/app\/market\/start\/ad reject-dict
+
+# Reddit
+^https?:\/\/gql(-fed)?\.reddit\.com response-body-json-jq jq-path="https://kelee.one/Resource/JQLang/Reddit/Reddit_remove_ads.jq"
+
+# 推栏
+^https?:\/\/m\.pvp\.xoyo\.com\/conf\/server-mapping$ response-body-json-del data.splashConf data.splashConfNew
+
+# 万达电影APP弹窗和搜索框信息流广告及小程序弹窗广告
+^https:\/\/misc-api-prd-mx\.wandafilm\.com\/commend\/common_banner_batch\.api response-body-json-jq '.data.objects["OpenAPP-&-FlashAD"] = [] | .data.objects["InTheaters-&-BoxAD"] = [] | .data.objects["NewHome-&-Search"] = [] | .data.objects["NewHome-&-foatAd"] = []'
+^https:\/\/front-gateway-c\.wandafilm\.com\/content\/search_input_integrate\.api response-body-json-jq '.data.contentList = [] | .data.movieList = []'
+^https?:\/\/misc-api-prd-mx\.wandafilm\.com\/commend\/common_banner_batch\.api\?bannerInfos=%5B%7B%22cinemaI response-body-replace-regex "WX_index_mp-&-boxAD" "fmz200"
+
+# 网上国网
+^https:\/\/osg-service\.sgcc\.com\.cn:18600\/emss-pfa-appset-front\/bootpageoutter\/ reject-dict
+
+# 小米商城
+^https:\/\/api\.m\.mi\.com\/v1\/order\/expressView response-body-json-del data.bottom.ad_info
+^https:\/\/api\.m\.mi\.com\/(?:v1\/(?:app\/popup_info|home\/page_feed|misearch\/search_input)|v2\/search\/search_default) reject-dict
+^https:\/\/shop-api\.retail\.mi\.com\/mtop\/navi\/(?:rec\/merge\/|skywheel\/mishop\/splash) reject-dict
+
+# 小熊拦截 移除更新弹窗
+^https:\/\/spamblocker-api\.zeekstudio\.com\/profile reject-dict
+^https:\/\/spamblocker-api\.zeekstudio\.com\/checkVersion reject-dict
+
+# 小宇宙 首页净化
+^https:\/\/api\.xiaoyuzhoufm\.com\/v1\/discovery-feed\/list response-body-json-jq '.data |= map(select(.type != "DISCOVERY_HEADER"and .type != "DISCOVERY_BANNER"and .type != "DISCOVERY_COVER_BANNER"))'
+# 移除开屏广告
+^https:\/\/api\.xiaoyuzhoufm\.com\/v\d\/flash reject-dict
+# 移除单集总结和ai总结
+^https:\/\/api\.xiaoyuzhoufm\.com\/v\d\/ai reject-dict
+# 移除小宇宙搜索框内容
+^https:\/\/api\.xiaoyuzhoufm\.com\/v\d\/search\/get reject-dict
+^https:\/\/api\.xiaoyuzhoufm\.com\/v1\/category\/list-daily reject-dict
+
+# 云闪付
+^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 reject
+
+# 转转小程序弹窗广告
+^https:\/\/app\.zhuanzhuan\.com\/zzopen\/zzbmlogic\/queryFrontPageWindowInfo\?cateId reject-dict
+
+[Script]
+# 12306
+http-request ^https:\/\/ad\.12306\.cn\/ad\/ser\/getAdList$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/12306.js, requires-body=true, tag=移除12306开屏广告
+http-request ^https:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/header.js, tag=移除12306应用内广告
+
+# 阿里云盘
+http-response ^https:\/\/(biz)?api\.alipan\.com\/apps\/v\d\/users?\/home\/(?:news|widgets) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Adrive.js, requires-body=true, tag=移除阿里云盘广告
+http-response ^https:\/\/member\.alipan\.com\/v1\/users\/onboard_list script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Adrive.js, requires-body = true, tag=移除阿里云盘广告
+
+# 阿里巴巴
+http-response ^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/BlockAds.js, requires-body=true, tag=移除阿里巴巴广告
+http-response ^https:\/\/poplayer\.template\.alibaba\.com\/\w+\.json script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/BlockAds.js, requires-body=true, tag=移除阿里巴巴广告
+
+# 百度防跳转
+http-response ^https:\/\/boxer\.baidu\.com\/scheme\?scheme script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/BaiduNoRedirect.js, tag=百度防跳转
+
+# 百度首页
+http-response ^https:\/\/(?:www|m)\.baidu\.com(\/|\/\?(tn=&)?from=\d+\w)?$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/BaiduIndex.js, requires-body=true, tag=移除百度首页广告
+
+# 百度知道
+http-response ^https:\/\/zhidao\.baidu\.com\/(?:question|index|\?fr|\?word) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/BaiduZhidao.js, requires-body=true, tag=移除百度知道广告
+
+# 草榴社区
+http-response ^https:\/\/2023\.redircdn\.com\/web\/mob_post\.js\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/BlockAds.js, requires-body=true, tag = 移除草榴社区广告
+
+# Dsenrp55
+http-request ^https:\/\/ghfgnm\.com\/mmapi\/m3u8\/p\/.+\.m3u8 script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Dsenrp55.js, requires-body=true, timeout=60, tag=移除Dsenrp55广告
+
+# 大众点评开屏广告
+http-response ^https?:\/\/img\.meituan\.net\/dpmobile\/ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Dianping.js, requires-body=true, timeout=60, tag=移除大众点评广告
+
+# 航旅纵横
+http-response ^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Umetrip_remove_ads.js, tag = 移除航旅纵横首页广告
+
+# JavDB
+http-response ^https:\/\/javdb\.com\/ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Javdb.js, requires-body=true, tag=移除JavDB广告
+
+# 建行生活全面净化
+http-response ^https:\/\/yunbusiness\.ccb\.com\/clp_service|basic_service\/txCtrl\?txcode= script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/CCB.js, requires-body=true, timeout=20, tag=移除建行生活广告
+
+# Missav
+http-response ^https:\/\/missav\.(?:ai|ws)\/(?!(build|fonts|img|js|api|cdn-cgi)\/). script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Missav.js, requires-body=true, tag=移除Missav广告
+
+# 小米商城
+http-response ^https:\/\/api\.m\.mi\.com\/v1\/app\/start script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/BlockAds.js, requires-body=true, tag=移除小米商城广告
+
+# 中国移动云盘
+http-response ^https:\/\/ad\.mcloud\.139\.com\/advertapi\/adv-filter\/ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Cloud139.js, requires-body=true, tag=移除中国移动云盘广告
+http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Cloud139.js, requires-body=true, tag=移除中国移动云盘广告
+
+# 转转小程序多处横幅广告悬浮广告
+http-response ^https:\/\/app\.zhuanzhuan\.com\/zz\/(?:transfer\/getpersonalcenter\?entChanl=&uiType=1&from=1089|v2\/zzlogic\/mywxcontinenthomepage\?from=1089) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Zhuan.js, requires-body=true, tag=移除转转广告
+
+[MITM]
+hostname=ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, www.washpayer.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, img*.douban.com, frodo.douban.com, erebor.douban.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, gab.122.gov.cn, adserviceretry.kglink.cn, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com, boxer.baidu.com, m.baidu.com, www.baidu.com, zhidao.baidu.com, asserts.avple.tv, javdb.com, *.pornhub.com, 18hlw.com, lneuk.rslsilne.cc, 7054s.rbcmpeu.org, d2bkn61acaxm61.cloudfront.net, missav.ai, missav.ws, dsenrp55.com, ghfgnm.com, api.xiaoyuzhoufm.com, mobads.baidu.com, fmapp.chinafamilymart.com.cn, spamblocker-api.zeekstudio.com, misc-api-prd-mx.wandafilm.com, acs.m.taobao.com, elemecdn.com, fuss10.elemecdn.com, cube.elemecdn.com, www1.elecfans.com, nr-op.elemecdn.com, acs.m.taobao.com, img.alicdn.com, front-gateway-c.wandafilm.com, gql.reddit.com, gql-fed.reddit.com, app.zhuanzhuan.com, i.waimai.meituan.com, yunbusiness.ccb.com, 114.115.217.129, home.umetrip.com, gw.xiaocantech.com, m.pvp.xoyo.com

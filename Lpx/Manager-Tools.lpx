@@ -1,0 +1,45 @@
+#!name=Manager Tools
+#!desc=重写及规则集转换\n高级订阅管理工具和Boxjs管理工具合集。\n使用前请在详情页面为［PROXY］项分配代理策略。
+#!author=小白脸,xream[https://github.com/xream],keywos[https://github.com/keywos],ckyb[https://github.com/chengkongyiban],Peng-YM[https://github.com/Peng-YM],chavyleung[https://github.com/chavyleung]
+#!tag=工具
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/ManagerTools.png
+#!date=2025-04-15
+
+[Argument]
+#!select=启用插件随机图标, 启用, 禁用
+#!select=替换原始插件图标, 启用, 禁用
+#!select=插件随机图标合集, Doraemon(100P),Shin-chan(100P),Weslie-Wolffy(100P),Tom-Jerry(100P),Genshin(160P),Shin-Miya(100P),OnePiece(100P),Stitch(100P),Pokemon(112P),PokemonGif(56P),Digimon(56P),Transformers(48P),Maruko-chan(100P),AttackOnTitan(84P),Naruto(284P)
+#!select=ScriptHub通知, 开启通知, 关闭通知, 跟随链接
+#!select = 节点缓存有效期,1分钟,5分钟,10分钟,30分钟,1小时,2小时,3小时,6小时,12小时,24小时,48小时,72小时,参数传入
+#!select = 响应头缓存有效期,1分钟,5分钟,10分钟,30分钟,1小时,2小时,3小时,6小时,12小时,24小时,48小时,72小时,参数传入
+
+[General]
+force-http-engine-hosts = script.hub, *.script.hub
+
+[Rule]
+DOMAIN,scripthub.vercel.app,PROXY
+DOMAIN,sub-store.vercel.app,PROXY
+DOMAIN-SUFFIX,jsdelivr.net,PROXY
+
+[Script]
+http-request ^https?:\/\/script\.hub\/($|edit\/|reload) script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/script-hub.js, timeout=300, tag=Script Hub: 前端
+
+http-request ^https?:\/\/script\.hub\/file\/_start_\/.+type=(?:qx-rewrite|surge-module|loon-plugin|all-module) script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/Rewrite-Parser.js, timeout=300, tag=Script Hub: 重写转换
+
+http-request ^https?:\/\/script\.hub\/file\/_start_\/.+type=rule-set script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/rule-parser.js, timeout=300, tag=Script Hub: 规则集转换
+
+http-request ^https?:\/\/script\.hub\/convert\/ script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/script-converter.js, timeout=300, tag=Script Hub: 脚本转换
+
+http-request ^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))) script-path=https://raw.githubusercontent.com/sub-store-org/Sub-Store/release/sub-store-1.min.js, requires-body=true, timeout=120, tag=Sub-Store Core
+http-request ^https?:\/\/sub\.store script-path=https://raw.githubusercontent.com/sub-store-org/Sub-Store/release/sub-store-0.min.js, requires-body=true, timeout=120, tag=Sub-Store Simple
+
+cron "55 23 * * *" script-path=https://raw.githubusercontent.com/sub-store-org/Sub-Store/release/cron-sync-artifacts.min.js, timeout=120, tag=Sub-Store Sync
+
+http-request ^https?:\/\/(.+\.)?boxjs\.(com|net) script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, requires-body=true, timeout=120, tag=BoxJs
+
+[MITM]
+hostname=script.hub, *.script.hub, sub.store, boxjs.com, boxjs.net, *.boxjs.com, *.boxjs.net

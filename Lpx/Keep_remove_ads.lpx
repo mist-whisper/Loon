@@ -1,0 +1,39 @@
+#!name=Keep去广告
+#!desc=移除开屏广告、搜索推荐和弹窗广告，精简底栏和首页标签。移除关注推荐、文章相关推荐和信息流中的课程推广。
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://pluginhub.kelee.one
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Keep.png
+#!date=2025-05-23 13:32:55
+
+[Rule]
+DOMAIN, kad.gotokeep.com, REJECT
+
+[Rewrite]
+^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/configs$ response-body-json-del data.adTimeoutReport data.spotShowReport data.adSupplementIntervalMinutes data.adSupplementSwitch data.hotFeedSpotAdRequestMoment data.activityBrandFeedSpotAdRequestMoment data.searchFeedSpotAdRequestMoment data.feedDetailSpotAdRequestMoment data.homePageFeedSpotAdRequestMoment data.followFeedSpotAdRequestMoment data.hotFeedRecommendSpotAdRequestMoment data.activityFeedSpotAdRequestMoment data.hotFeedFindSpotAdRequestMoment data.hotFeedSpotFixedPositionSecond data.searchFeedSpotFixedPositionSecond data.followFeedSpotFixedPositionSecond data.activityFeedSpotFixedPositionSecond data.searchFeedSpotFixedPositionThird data.hotFeedFindSpotFixedPositionSecond data.hotFeedFindSpotFixedPositionThird data.activityFeedSpotFixedPositionInitial data.activityFeedSpotFixedPositionThird data.hotFeedDynamicSpotPosition data.feedDetailDynamicSpotPosition data.hotFeedRecommendDynamicSpotPosition data.hotFeedFindDynamicSpotPosition data.homePageFeedDynamicSpotPosition data.followFeedDynamicSpotPosition data.searchFeedSpotPositionDynamic data.activityFeedSpotPositionDynamic data.activityBrandFeedSpotPositionDynamic data.splashAdLoadTimeLimit data.courseAdLoadTimeLimit data.feedAdLoadTimeLimit data.aliHCSpotConfig data.gdtSpotConfig data.pugcThresholdPercent data.pugcStepMinSeconds data.pugcStepMaxSeconds data.pugcPreLoadEarlySeconds data.pugcLoadPostPreRolls data.closeConfirmButtonText
+
+^https:\/\/api\.gotokeep\.com\/op-engine-webapp\/v1\/ad\/ reject-dict
+
+^https:\/\/api\.gotokeep\.com\/search\/v6\/default\/keyword\/list\? reject-dict
+
+^https:\/\/api\.gotokeep\.com\/twins\/v4\/feed\/followPage\? reject-dict
+
+^https:\/\/api\.gotokeep\.com\/twins\/union\/feed\/union_feed_all$ response-body-json-jq '.data.modules |= map(select(.code == "unionFeedEntry"))'
+
+^https:\/\/api\.gotokeep\.com\/twins\/v4\/feed\/entryDetail\? response-body-json-replace data {}
+
+^https:\/\/api\.gotokeep\.com\/guide-webapp\/v1\/popup\/getPopUp\? reject-dict
+
+^https:\/\/api\.gotokeep\.com\/config\/v3\/basic\? response-body-json-jq '.data.bottomBarControl.tabs |= map(select(.tabType | . == "home" or . == "dynamic_sports" or . == "personal")) | .data.homeTabs |= map(select(.type | . == "socialTab" or . == "union_feed_all" or . == "homeRecommend" or . == "suitTab" or . == "union_feed_route"))'
+
+^https:\/\/api\.gotokeep\.com\/search\/v5\/hotCourse\/list$ reject-dict
+
+^https:\/\/api\.gotokeep\.com\/search\/v4\/hotHashtag\/list$ reject-dict
+
+^https:\/\/api\.gotokeep\.com\/search\/v4\/hotword\/list\? reject-dict
+
+[MitM]
+hostname=api.gotokeep.com

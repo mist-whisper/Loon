@@ -1,0 +1,15 @@
+#!name=订阅通会员
+#!desc=解锁订阅通会员
+#!author=骨钉[https://github.com/Guding88],wish[https://github.com/mist-whisper]
+#!tag=解锁
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/Subtrack.png
+#!date=2024-07-24 15:44:57
+
+[Script]
+http-response ^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Subtrack/Subtrack.js, requires-body=true, timeout=60, tag=订阅通会员
+[MITM]
+hostname=buy.itunes.apple.com

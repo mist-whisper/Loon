@@ -1,0 +1,9 @@
+# NAME: Duolingo
+# AUTHOR: blackmatrix7
+# HOMEPAGE: https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Loon/Duolingo/Duolingo.list
+# UPDATED: 2024-01-08 16:02:59
+# DOMAIN-SUFFIX: 2
+# TOTAL: 2
+
+DOMAIN-SUFFIX,duolingo.cn
+DOMAIN-SUFFIX,duolingo.com
