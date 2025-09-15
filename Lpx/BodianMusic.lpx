@@ -1,0 +1,53 @@
+#!name=波点音乐
+#!desc=解锁波点音乐会员、下载功能以及付费专辑，移除开屏广告、横幅推广、悬浮广告以及商城Tab，建议卸载重装使用。
+#!author=WeiGiegie[https://github.com/WeiGiegie],可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md],ZenmoFeiShi[https://github.com/ZenmoFeiShi],wish[https://github.com/mist-whisper]
+#!tag=解锁去广告
+#!system=iOS iPadOS
+#!system_version=15
+#!loon_version=3.2.9(837)
+#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BodianMusic.png
+#!date=2025-09-15 17:23:00
+
+[Rewrite]
+# 移除开屏广告
+^https://ad\.tencentmusic\.com/config/uni reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/(play|service|advert)\/advert\/ reject-dict
+
+# 移除悬浮广告
+^https:\/\/bd-api\.kuwo\.cn\/api\/popup\/ reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/pay\/vip\/invitation\/assist\/popup\? reject-dict
+
+# 移除横幅推广
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/banner\/ reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/home\/module\?.*&moduleId=6 reject-dict
+
+# 移除会员角标
+^https:\/\/bd-api\.kuwo\.cn\/api\/pay\/vip\/lowPriceText\? reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/global\/config\/vipEnter\? reject-dict
+^https:\/\/bd-api\.kuwo\.cn\/api\/ucenter\/vip\/give\/config\? reject-dict
+
+# 移除搜索框热词
+^https:\/\/bd-api\.kuwo\.cn\/api\/search\/topic\/word reject-dict
+
+# 移除主页商城tab
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/global\/config\/scene response-body-json-jq '.data.showShopEntry=false|.data.idolTabShow=true'
+
+# 精简主页
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/home\/index response-body-json-jq '.data.moduleList |= map(select(.type != 8 and .type != 5 and .type != 1 and .type != 9 and .type != 6 and .type != 4))'
+
+# 移除听点儿不一样的
+^https:\/\/bd-api\.kuwo\.cn\/api\/service\/resource\/recommend\? response-body-json-jq '.data.resourceList[] |= del(.resource)'
+
+# 移除评论区商品周边
+^https:\/\/bd-api\.kuwo\.cn\/api\/comments\/v3\/topInfo response-body-json-jq 'del(.data.putao)'
+
+# 移除沉浸电台banner
+^https:\/\/bd-api\.kuwo\.cn\/api\/voice\/room\/v2\/sidebar response-body-json-jq '(.data) = {}'
+
+
+[Script]
+http-response ^https?:\/\/(bd-api\.kuwo\.cn\/api\/(ucenter\/users\/(pub|login)|play\/(advert\/info|music\/v2\/(audioUrl|checkRight))|service\/(home\/module|music\/download\/(info|config)|global\/config\/(scene|vipEnter)|banner\/positions)|advert\/(config|free\/config)|search\/topic\/word\/list|pay\/(vip\/(lowPriceText|invitation\/(assist\/popup|swell))|audition\/url|sp\/actVip))|us\.l\.qq\.com\/exapp\?adposcount) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BodianMusic/BodianMusic.js, requires-body=true, timeout=60, tag=波点音乐
+
+[MITM]
+hostname=bd-api.kuwo.cn,*.kuwo.*,ad.tencentmusic.com,*.l.qq.com,39.156.123.46:443,bd-api.kuwo.com,39.156.123.46,39.156.12*.*:443,h5app.kuwo.cn,bodianimgcdn.kuwo.cn,h5s.kuwo.cn,39.156.121.20:443,111.30.171.170:443,39.156.121.21:443,h5s.kuwo.cn,39.156.121.20:443
