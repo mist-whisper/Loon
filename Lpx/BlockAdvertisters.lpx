@@ -291,5 +291,3 @@ DOMAIN-SUFFIX, adsmoloco.com, REJECT
 
 [MitM]
 hostname=video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com
-[MitM]
-hostname=video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com
