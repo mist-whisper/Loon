@@ -1,5 +1,7 @@
 # NAME: Apple Global
-# UPDATED: 2025-08-26
+# UPDATED: 2025-10-08
+
+DOMAIN,amp-api.podcasts.apple.com
+DOMAIN,bookkeeper.itunes.apple.com
 
 DOMAIN-SUFFIX,buy.itunes.apple.com
-DOMAIN,amp-api.podcasts.apple.com
