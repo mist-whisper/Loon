@@ -1,5 +1,5 @@
 #!name=酷我音乐去广告
-#!desc=解锁会员皮肤、会员音频(音质最高支持到“至臻音质2.0”)、听书权限。移除开屏广告、各类弹窗、悬浮窗、各类横幅广告、信息流广告、歌词评论区广告和播放器界面广告，精简侧边栏。
+#!desc=解锁会员、听书权限。移除开屏广告、各类弹窗、悬浮窗、各类横幅广告、信息流广告、歌词评论区广告和播放器界面广告，精简侧边栏。
 #!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md],影子[https://www.napi.ltd],wish[https://github.com/mist-whisper]
 #!tag=解锁去广告
 #!system=iOS iPadOS
@@ -7,10 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/Kuwo.png
-#!date = 2025-03-15
-
-[Argument]
-QS = select,"Hi-Res音质","无损音质","超品音质","高品音质",tag=音质选择
+#!date = 2025-10-09 19:37
 
 [Rule]
 USER-AGENT,KWPlayer*,PROXY
@@ -45,12 +42,13 @@ URL-REGEX,"^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/album\/adBar\/",REJECT-DICT
 ^https:\/\/vip\d\.kuwo\.cn\/commercia\/vipconf\/projectPage\/getPageContent reject-dict
 ^https:\/\/tingshu\.kuwo\.cn\/v2\/api\/pay\/user\/info reject-dict
 ^https:\/\/appi\.kuwo\.cn\/kuwopay\/personal\/cells reject-dict
+^http://mobilead\.kuwo\.cn/EcomResourceServer/getMotor\.do reject-dict
 
 ^.*?(ad(.*)?\.tencentmusic\.com|kuwo\.cn\/((EcomResource|(Mobile)?Ad)Serv(er|ice)|(vip|(open)?api)?\/v\d\/(user\/freeMode|sysinfo\?op\=getRePayAndDoPayBox(New)?|album\/adBar|app\/(newMenuList\/menuListInfo|pasterAdvert\/config)|api\/advert\/(iListen|album)|operate\/pop\/info|online\/sign\/new\/playEntryV1)|kuwopay\/vip-tab\/page\/floatbox)) reject-200
 
 [Script]
 http-response ^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/tingshu\/index\/radio script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Kuwo/Kuwo_remove_ads.js,requires-body=true,tag=移除听书页面广告
-http-response ^(?!.*img).*?(abt-kuwo\.tencentmusic\.com|kuwo\.cn)(/vip|/(open)?api)?(/enc.*?signver|/(v\d/)?(pay/app/getConfigInfo|user/vip\?(vers|apiVersion|platform|op\=ui|_t)|app/startup/config|theme\?op=gd|api/((pay/)?(user/info|payInfo/kwplayer/payMiniBar)|advert/myPage)|tingshu/index/radio|operate/homePage|sysinfo\?op\=getRePayAndDoPayBox(New)?&useNewHeadShow|recommend/(daily/main|songlist/getRecSonglist))|/kuwo/ui/info$|/kuwopay\/personal\/cells|/pay/viptab/index\.html|/kuwopay/vip-tab/(setting|page/cells)|/a\.p($|\?newver\=\d$|.*?op\=(getvip|policy_shortvideo)|.*?ptype\=vip)|/commercia/vip/(player/getStyleListByModel|hanger/wear)|/mobi\.s\?f\=kwxs|/music\.pay\?newver\=\d$|/basedata\.s\?type\=get_album_info|/mgxh\.s\?user) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Kuwo/Kuwovip.js, requires-body=true, timeout=60, tag=酷我音乐会员解锁, argument=[{QS}]
+http-response ^https?:\/\/(?:musicpay|nmobi|vip1|audiobookpay|tingshu|anymatch|mobilebasedata|rich|mobilead|wapi)\.kuwo\.cn\/(?:music\.pay\?newver=\d+|mobi.s\?f=kwxs|vip\/(?:enc\/user\/vip\?op=ui&uid=|v2\/theme\?op=gd)|a\.p|v2\/api\/pay\/user\/info|api\/music\/info|AdService\/kaiping\/adinfo|EcomResourceServer\/adEarnGuajian\/adinfo|openapi\/v1\/operate\/homePage|commercia\/(?:vipTab\/myTab\/base|userAssets\/downloadCoupon\/reduce)) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/Kuwo/KuwoVIP.js, requires-body=true, timeout=60, tag=酷我音乐会员解锁
 
 [MitM]
-hostname=appi.kuwo.cn,mc.tencentmusic.com,vip*.kuwo.cn,tingshu.kuwo.cn
+hostname=anymatch.kuwo.cn,musicpay.kuwo.cn,mobilebasedata.kuwo.cn,vip1.kuwo.cn,rich.kuwo.cn,mobilead.kuwo.cn,*.kuwo.cn
