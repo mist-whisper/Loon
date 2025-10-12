@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://pluginhub.kelee.one
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/KuGou.png
-#!date=2025-05-13 15:17:08
+#!date=2025-10-12 22:22:00
 
 [Rule]
 DOMAIN, ads.service.kugou.com, REJECT
@@ -50,5 +50,22 @@ URL-REGEX, "^http:\/\/log\.stat\.kugou\.com\/mobile\/ad\.html", REJECT
 
 ^https:\/\/gateway(retry)?\.kugou\.com\/ocean\/v\d\/tab\/list_v\d response-body-json-jq 'def namesToRemove:["AI帮唱","长相思2","K歌","小说","游戏"];def removeParentIfNameMatches:if type=="object"then with_entries(select(.value|(type=="object"and .name as $name|$name|IN(namesToRemove[])|not)))|map_values(removeParentIfNameMatches)else .end;removeParentIfNameMatches'
 
+# 开屏广告
+^https?:\/\/ads\.service\.kugou\.com\/v4\/mobile_splash.*$ response-body-json-jq '.data.boot_ads = [] | .data.front_ads = []'
+^https?:\/\/ads\.service\.kugou\.com\/v4\/mobile_splash_sort(\?.*)?$ response-body-json-jq '.data.ads = [] | .data.retry_local_ads = [] | .data.retry_ads = [] | .data.least_ads = []'
+
+# 搜索框推广
+^https?:\/\/gateway\.kugou\.com\/searchnofocus\/v1\/search_no_focus_word(\?.*)?$ response-body-json-jq '.data.ads = [] | .data.fallback = []'
+^https?:\/\/gateway\.kugou\.com\/hotsearch\/v1\/search_hotword(\?.*)?$ response-body-json-jq '.data.list = [] | .data.extension = []'
+# 猜你喜欢
+^https?:\/\/gateway\.kugou\.com\/guessyousearch\/v1\/guess_you_search(\?.*)?$ response-body-json-jq '.data.words = []'
+
+# 应用内推广
+^https?://gateway\.kugou\.com/mstc/musicsymbol/v1/system/profile response-body-json-jq '.data.task = [] | .data.ads = []'
+
+# 首页直播模块
+^https:\/\/gateway\.kugou\.com\/card\/v1\/pxy\/recommend_stream_v2\?.*$ response-body-json-jq 'del(.data.responses[] | select(.module == "fx_recommend_star"))'
+
+
 [MitM]
-hostname=gateway.kugou.com, fx.service.kugou.com, hwstore.kugou.com, ep.kugou.com, gatewayretry.kugou.com, gzacshow.kugou.com, m1fxgroup.kugou.com
+hostname=gateway.kugou.com, fx.service.kugou.com, hwstore.kugou.com, ep.kugou.com, gatewayretry.kugou.com, gzacshow.kugou.com, m1fxgroup.kugou.com, ads.service.kugou.com
