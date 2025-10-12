@@ -7,14 +7,14 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/Mango_TV.png
-#!date=2025-07-28 11:53:00
+#!date=2025-10-12 22:11:00
 
 [Rewrite]
-^https?://mobile.da.mgtv.com\/m\/page - reject-dict
+^https?://mobile.da.mgtv.com\/m\/page reject-dict
 
 [Script]
-http-request ^https?:\/\/mobile-stream\.api\.mgtv\.com\/v1\/video\/source\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/CNFTP/Mangotk.js, requires-body=true, timeout=60, tag=解锁芒果TV会员
-http-response ^https?:\/\/.*mgtv.com.*(GetUserInfo|module\/list\?_support|app\/bdboot|pullReleaseInfo|floor\/detail|video\/source|entry\?_support).*$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/CNFTP/MangoTV.js, requires-body=true, timeout=60, tag=芒果TV页面优化
+http-request ^https?:\/\/mobile-stream\.api\.mgtv\.com\/v1\/video\/source\? script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/MangoTV/Mangotk.js, requires-body=true, timeout=60, tag=解锁芒果TV会员
+http-response ^https?:\/\/.*mgtv.com.*(GetUserInfo|module\/list\?_support|app\/bdboot|pullReleaseInfo|floor\/detail|video\/source|entry\?_support).*$ script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/MangoTV/MangoTV.js, requires-body=true, timeout=60, tag=芒果TV页面优化
 
 [MITM]
 hostname=*mgtv.com
