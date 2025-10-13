@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://pluginhub.kelee.one
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/KuGou.png
-#!date=2025-10-12 23:51:00
+#!date=2025-10-14 02:01:00
 
 [Rule]
 DOMAIN, ads.service.kugou.com, REJECT
@@ -56,6 +56,9 @@ URL-REGEX, "^http:\/\/log\.stat\.kugou\.com\/mobile\/ad\.html", REJECT
 
 # 用户配置推广
 ^https?:\/\/gateway\.kugou\.com\/(?:\w+\/)*combo\/startup response-body-json-jq 'del(.data.responses[] | select(.module == "overseas_check_v2" or .module == "tab_bottom_list"))'
+
+# ip位置修改
+^https:\/\/gateway\.kugou\.com\/[\w\/.-]+(?=\?appid=) response-body-json-jq '.data.info.province = "上海市" | .data.info.city = "上海" | .data.info.adcode = "310000"'
 
 # 搜索框推广
 ^https?:\/\/gateway\.kugou\.com\/searchnofocus\/v1\/search_no_focus_word(\?.*)?$ response-body-json-jq '.data.ads = [] | .data.fallback = []'
