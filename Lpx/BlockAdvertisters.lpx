@@ -1,5 +1,5 @@
 #!name=广告平台拦截器
-#!desc=此插件是所有去广告插件的基础，只针对广告平台处理。你依然需要安装其他去广告插件来搭配使用，并确保此插件始终排序在顶部。\n\n支持拦截腾讯、字节跳动、快手、百度、邑盟、倍孜、艾狄墨搏、袤博、极光、个推、友盟、阿里、优比客思、秒针、网易、美团、小米、京东、天目、讯飞、泛连、锐讯灵通、聚次方、美数、嗨量、维快网络、变现猫、章鱼、分秒、泰之菩、翼信、快易、数萤技术、方麟、益起、上量优选、新义互联、腾云天下、布里奇、塔酷、丽声、推啊、旺脉、新度博望、新多广告、快易科技、封狐信息、互裕科技、旺脉信息、佳量动力、享点科技、游昆信息、小川科技、Google、SupersonicAds、APPSAD、Adjust、Sigmob、TradPlus、Fancy、MedPro、AppLovin、Unity3D、Tapjoy、Liftoff、Vungle等广告平台的广告请求，更适合iOS平台的应用。
+#!desc=此插件是所有去广告插件的基础，只针对广告平台处理。你依然需要安装其他去广告插件来搭配使用，并确保此插件始终排序在顶部。\n\n支持拦截腾讯、字节跳动、快手、百度、邑盟、倍孜、艾狄墨搏、袤博、极光、个推、友盟、阿里、超级汇川、优比客思、秒针、网易、美团、小米、京东、天目、讯飞、泛连、锐讯灵通、聚次方、美数、嗨量、维快网络、变现猫、章鱼、分秒、泰之菩、翼信、快易、数萤技术、方麟、益起、上量优选、新义互联、腾云天下、布里奇、塔酷、丽声、推啊、旺脉、新度博望、新多广告、快易科技、封狐信息、互裕科技、旺脉信息、佳量动力、享点科技、游昆信息、小川科技、旺脉科技、Google、SupersonicAds、APPSAD、Adjust、Sigmob、TradPlus、Fancy、MedPro、AppLovin、Unity3D、Tapjoy、Liftoff、Vungle、Moloco、Smadex、Tapad、Appier、InMobi、AppsFlyer、AppLovin、Moloco、RayJump、RixEngine等广告平台的广告请求，更适合iOS平台的应用。
 #!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
 #!tag=去广告依赖
 #!system=iOS iPadOS
@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://hub.kelee.one
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/Website_icon/120px/TencentAd.png
-#!date=2025-09-16 13:41:39
+#!date=2025-10-26 01:24:37
 
 [Rule]
 AND, ((DOMAIN-KEYWORD, tnc), (OR, ((DOMAIN-SUFFIX, capcutapi.com), (DOMAIN-SUFFIX, zijieapi.com), (DOMAIN-SUFFIX, isnssdk.com), (DOMAIN-SUFFIX, toutiaoapi.com), (DOMAIN-SUFFIX, bytedance.com), (DOMAIN-SUFFIX, snssdk.com), (DOMAIN-SUFFIX, sgsnssdk.com)))), DIRECT
@@ -18,7 +18,6 @@ AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.
 DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
 DOMAIN, dig.bdurl.net, REJECT
 DOMAIN, extlog.snssdk.com, REJECT
-DOMAIN, i.snssdk.com, REJECT
 DOMAIN, mcs.snssdk.com, REJECT
 DOMAIN-SUFFIX, bds.snssdk.com, REJECT
 DOMAIN-SUFFIX, byteadverts.com, REJECT
@@ -42,6 +41,7 @@ DOMAIN, sf3-fe-tos.pglstatp-toutiao.com, REJECT
 DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
 DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
 DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+DOMAIN-SUFFIX, pangle.io, REJECT
 
 DOMAIN-KEYWORD, iflyad.bj.openstorage.cn, REJECT
 DOMAIN-KEYWORD, bjimp.voiceads.cn, REJECT
@@ -238,6 +238,7 @@ DOMAIN-SUFFIX, adjust.net.in, REJECT
 
 DOMAIN-SUFFIX, doubleclick-cn.net, REJECT
 DOMAIN-SUFFIX, googlesyndication-cn.com, REJECT
+DOMAIN, fundingchoicesmessages.google.com, REJECT
 
 DOMAIN-SUFFIX, xinduoad.com, REJECT
 
@@ -262,7 +263,7 @@ DOMAIN, adapi.izuiyou.com, REJECT
 
 DOMAIN-SUFFIX, domob.cn, REJECT
 
-DOMAIN-SUFFIX, 1rtb.com, REJECT
+DOMAIN-SUFFIX, adwangmai.com, REJECT
 
 DOMAIN-SUFFIX, bxsnews.com, REJECT
 
@@ -282,6 +283,25 @@ DOMAIN-SUFFIX, tapjoy.com, REJECT
 DOMAIN-SUFFIX, ads.vungle.com, REJECT
 
 DOMAIN-SUFFIX, adsmoloco.com, REJECT
+
+DOMAIN-SUFFIX, smadex.com, REJECT
+
+DOMAIN-SUFFIX, tapad.com, REJECT
+
+DOMAIN-SUFFIX, adsappier.com, REJECT
+
+DOMAIN-SUFFIX, inmobi.com, REJECT
+DOMAIN-SUFFIX, inmobicdn.net, REJECT
+
+DOMAIN-SUFFIX, appsflyersdk.com, REJECT
+
+DOMAIN-SUFFIX, applvn.com, REJECT
+
+DOMAIN-SUFFIX, moloco.com, REJECT
+
+DOMAIN-SUFFIX, rayjump.com, REJECT
+
+DOMAIN-SUFFIX, rixengine.com, REJECT
 
 [Rewrite]
 ^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
