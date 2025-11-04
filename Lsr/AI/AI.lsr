@@ -1,6 +1,6 @@
 # NAME: AI
 # AUTHOR: 可莉🅥,wish
-# UPDATED: 2025-06-25
+# UPDATED: 2025-11-05
 
 # Apple Intelligence
 DOMAIN,apple-relay.mask.apple-dns.net
@@ -76,3 +76,10 @@ DOMAIN-SUFFIX,mistral.ai
 # Grok AI
 DOMAIN,api.x.ai
 DOMAIN-SUFFIX,x.ai
+
+# Trae AI
+DOMAIN, trae-api-sg.mchost.guru
+DOMAIN-SUFFIX, trae.ai
+
+# OpenRouter
+DOMAIN-SUFFIX, openrouter.ai
