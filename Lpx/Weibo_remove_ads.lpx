@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://pluginhub.kelee.one
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/Weibo.png
-#!date=2025-09-18 13:39:00
+#!date=2025-11-04 21:00:00
 
 [Rule]
 DOMAIN-SUFFIX, uve.weibo.com, DIRECT
@@ -43,6 +43,9 @@ DOMAIN-SUFFIX, biz.weibo.com, REJECT
 # 猜你想搜及首页红包浮窗【测试】
 ^https:\/\/api\.weibo\.cn\/2\/!\/was\/finder\/searchbarchange reject-dict
 ^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active) response-body-json-jq '.feed_redpacket = {}| .floating_windows = [] | .surprise_config = []'
+
+# 移除推荐tag
+^https?:\/\/api\.weibo\.cn\/\d\/groups\/allgroups\/v\d response-body-json-jq '.pageDatas |= map(select(.pageDataType != "homeExtend" and .pageDataType != "homeHot")) | (.pageDatas[0].categories[0].pageDatas |= del(.[0]))'
 
 [Script]
 http-response ^https:\/\/api\.weibo\.cn\/2\/(?:checkin\/show|client\/publisher_list|push\/active) script-path=https://kelee.one/Resource/JavaScript/Weibo/Weibo_remove_ads.js, requires-body=true, tag=移除首页推广
