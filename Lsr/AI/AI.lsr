@@ -1,11 +1,17 @@
 # NAME: AI
 # AUTHOR: 可莉🅥,wish
-# UPDATED: 2025-11-05
+# UPDATED: 2025-11-09
 
 # Apple Intelligence
 DOMAIN,apple-relay.mask.apple-dns.net
 DOMAIN,apple-relay.cloudflare.com
-DOMAIN,apple-relay.apple.com
+DOMAIN-SUFFIX,guzzoni.apple.com
+DOMAIN-SUFFIX,smoot.apple.com
+DOMAIN-SUFFIX,apple-relay.cloudflare.com
+DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+DOMAIN-SUFFIX,cp4.cloudflare.com
+DOMAIN-SUFFIX,apple-relay.apple.com
+DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
 
 # ChatGPT
 AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-),(DOMAIN-SUFFIX,webpubsub.azure.com))
