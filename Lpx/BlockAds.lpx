@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BlockAds.png
-#!date=2025-10-08 14:04:00
+#!date=2025-11-16 16:06:00
 
 [Rule]
 # 12306
@@ -158,20 +158,11 @@ DOMAIN, switch.cup.com.cn, REJECT
 ^https:\/\/bp-api\.bestv\.cn\/cms\/api\/c\/search\/hot\/v(2|4) response-body-json-jq '.dt.hot = [] | .dt.recommand = [] | .dt.bannerList = []'
 
 # 大麦
-^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.wireless\.home\.welcome reject-200
-^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.popup\.get reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i1\/.*-tps-1080-1920.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i2\/.*-tps-1080-1920.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i3\/.*-tps-1080-1920.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i4\/.*-tps-1080-1920.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i1\/.*-tps-1125-2436.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i2\/.*-tps-1125-2436.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i3\/.*-tps-1125-2436.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i4\/.*-tps-1125-2436.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i1\/.*-tps-900-1350.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i2\/.*-tps-900-1350.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i3\/.*-tps-900-1350.jpg reject-200
-^https?:\/\/img\.alicdn\.com\/imgextra\/i4\/.*-tps-900-1350.jpg reject-200
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.wireless\.home\.welcome\/ reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.popup\.get\/ reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.wireless\.user\.my\.content\.get\/ response-body-json-del data.banner data.performFilmVip.userProfitList
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.wireless\.mypage\.feed\/ response-body-json-del data.feedCard
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.damai\.mec\.aristotle\.get\/ response-body-json-del data.data.top.keywords
 
 # 豆瓣
 ^https:\/\/api\.douban\.com\/v2\/app_ads\/splash\w+ reject-dict
@@ -256,6 +247,19 @@ DOMAIN, switch.cup.com.cn, REJECT
 
 # Reddit
 ^https?:\/\/gql(-fed)?\.reddit\.com response-body-json-jq jq-path="https://kelee.one/Resource/JQLang/Reddit/Reddit_remove_ads.jq"
+
+# 淘票票
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.life\.popup\.get\/ reject-dict
+
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopintegrationapi\.homeconfig\/ response-body-json-del data.returnValue.floatingBanner data.returnValue.searchShadeList
+
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopintegrationapi\.homeconfig\/ response-body-json-jq '.data.returnValue.topTab |= map(select(.activeImage | not)) | .data.returnValue.topTab |= map(del(.backgroundColor))'
+
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.life\.aristotle\.get\/ response-body-json-jq 'def filter_nodes: map(if .data.componentId? and (.data.componentId | type == "string") and (.data.componentId | (contains("tpp_banner") or . == "tpp_guess_like")) then empty else .nodes |= (if . then filter_nodes else . end) end); .data.nodes |= (if . then filter_nodes else . end)'
+
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopindependentadvertiseapi\.queryadvertise\/ reject-dict
+
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopitemadvertiseapi\.queryadvertise\/ reject-dict
 
 # 推栏
 ^https?:\/\/m\.pvp\.xoyo\.com\/conf\/server-mapping$ response-body-json-del data.splashConf data.splashConfNew
