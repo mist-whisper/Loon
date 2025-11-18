@@ -1,5 +1,5 @@
 #!name=微博去广告
-#!desc=过滤微博广告及去除各部分推广模块
+#!desc=过滤微博广告及去除各部分推广模块。
 #!author=RuCu6[https://github.com/RuCu6], zmqcherish[https://github.com/zmqcherish], wish[https://github.com/mist-whisper]
 #!tag=去广告
 #!system=iOS iPadOS
@@ -14,6 +14,10 @@ DOMAIN-SUFFIX, uve.weibo.com, DIRECT
 
 DOMAIN, huodong.weibo.cn, REJECT
 DOMAIN-SUFFIX, biz.weibo.com, REJECT
+
+#ip分流
+URL-REGEX,"^https:\/\/api\.weibo\.cn\/2\/comments\/create\?",PROXY
+URL-REGEX,"^https?:\/\/api\.weibo\.cn\/2\/statuses\/send\?",PROXY
 
 [Rewrite]
 ^https:\/\/api\.weibo\.cn\/2\/(?:ug\/checkin\/list|push\/daily|push\/info) reject-dict
