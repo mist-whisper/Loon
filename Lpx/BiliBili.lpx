@@ -1,18 +1,17 @@
 #!name=哔哩哔哩去广告
-#!desc=过滤哔哩哔哩广告、移除青少年模式弹窗和交互式弹幕、移除无用功能和链接跟踪参数，增加空降助手以便跳过视频中插入的广告。此插件仅建议iOS 15以上设备使用，且必须启用MitM-over-HTTP/2功能。\n空降助手是第三方提供的功能，依赖于Android版空降助手的服务器数据运作，可能会存在不准确或者失效的问题，此功能与哔哩哔哩官方无关。
+#!desc=过滤哔哩哔哩广告、移除青少年模式弹窗和交互式弹幕、移除无用功能和链接跟踪参数，国际版可切换视频高码率（不含番剧电影等），增加空降助手以便跳过视频中插入的广告。此插件仅建议iOS 15以上设备使用，且必须启用MitM-over-HTTP/2功能。\n空降助手是第三方提供的功能，依赖于Android版空降助手的服务器数据运作，可能会存在不准确或者失效的问题，此功能与哔哩哔哩官方无关。
 #!author=Maasea[https://github.com/Maasea],kokoryh[https://github.com/kokoryh],RuCu6[https://github.com/RuCu6],可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md],wish[https://github.com/mist-whisper]
 #!tag=去广告
 #!system=iOS iPadOS
 #!system_version=15
 #!loon_version=3.2.9(837)
-#!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
+#!homepage=https://loonhub.wuyra.com
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/App_icon/120px/Bilibili.png
-#!date=2025-09-07 18:34:00
+#!date=2025-11-20 13:43:00
 
 [Argument]
 showUpList=select, "auto", "show", "hide", tag=[动态]中[最常访问]的显示方式, desc=auto：仅当列表中存在直播状态时显示；true：始终显示；false：始终隐藏。
-filterTopReplies=switch, false, true, tag=移除评论区置顶广告, desc=移除评论区置顶广告
-purifyWebpage=switch, false, true, tag=净化内嵌网页,desc=
+purifyTopReplies=switch, false, true, tag=移除评论区置顶广告, desc=移除评论区置顶广告
 airborne=switch, false, true, tag=空降助手, desc=用于跳过视频中的广告
 logLevel=select, "off", "error", "warn", "info", "debug", tag=日志等级, desc=脚本的日志输出等级
 
@@ -31,7 +30,7 @@ AND,((DOMAIN-SUFFIX,chat.bilibili.com), (OR,((DOMAIN-KEYWORD,stun), (DOMAIN-KEYW
 ^https:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive\? mock-response-body data-type=text status-code=200 data="{"code":0,"data":{"closeType":"close_win","container":[],"showTime":""},"message":"success"}"
 ^https:\/\/grpc\.biliapi\.net\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus$ mock-response-body data-type=base64 data="AAAAABMKEQgCEgl0ZWVuYWdlcnMgAioA" mock-data-is-base64=true
 ^https:\/\/grpc\.biliapi\.net\/bilibili\.app\.interface\.v1\.Search\/DefaultWords$ mock-response-body data-type=base64 data="AAAAACkaHeaQnOe0ouinhumikeOAgeeVquWJp+aIlnVw5Li7IgAoAToAQgBKAA==" mock-data-is-base64=true
-^https:\/\/grpc\.biliapi\.net\/bilibili\.app\.view\.v1\.View\/TFInfo$ mock-response-body data-type=base64 data="AAAAAAIIAQ==" mock-data-is-base64=true
+^https:\/\/grpc\.biliapi\.net\/bilibili\.app\.(view\.v1\.View\/TFInfo|viewunite\.v1\.View\/ViewEndPage)$ mock-response-body data-type=base64 data="AAAAAAA=" mock-data-is-base64=true
 
 ^https:\/\/api\.bilibili\.com\/pgc\/page\/channel\?(.*)&mobi_app=iphone&(.*)$ header https://api.bilibili.com/pgc/page/channel?$1&mobi_app=iphone_i&$2 header
 
@@ -51,9 +50,7 @@ AND,((DOMAIN-SUFFIX,chat.bilibili.com), (OR,((DOMAIN-KEYWORD,stun), (DOMAIN-KEYW
 [Script]
 http-request ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.community\.service\.dm\.v1\.DM\/DmSegMobile$ script-path=https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/bilibili.protobuf.request.js, argument=[{logLevel}], requires-body=true, binary-body-mode=true, enable={airborne}, tag=空降助手
 
-http-response ^https:\/\/live\.bilibili\.com\/blackboard\/era\/.+\.html\? script-path=https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/webpage.bilibili.js, requires-body=true, enable={purifyWebpage}, tag=净化内嵌网页
-
-http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.(app\.(show\.v1\.Popular\/Index|dynamic\.v2\.Dynamic\/DynAll|view(unite)?\.v1\.View\/(View|ViewProgress|RelatesFeed)|playurl\.v1\.PlayURL\/PlayView|playerunite\.v1\.Player\/PlayViewUnite)|polymer\.app\.search\.v1\.Search\/SearchAll|community\.service\.dm\.v1\.DM\/DmView|main\.community\.reply\.v1\.Reply\/MainList|pgc\.gateway\.player\.v2\.PlayURL\/PlayView)$ script-path=https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/bilibili.protobuf.response.js, argument=[{showUpList}, {filterTopReplies}, {airborne}, {logLevel}], requires-body=true, binary-body-mode=true, tag=ProtoBuf处理
+http-response ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.(app\.(show\.v1\.Popular\/Index|dynamic\.v2\.Dynamic\/DynAll|view(unite)?\.v1\.View\/(View|ViewProgress|RelatesFeed)|playurl\.v1\.PlayURL\/PlayView|playerunite\.v1\.Player\/PlayViewUnite)|polymer\.app\.search\.v1\.Search\/SearchAll|community\.service\.dm\.v1\.DM\/DmView|main\.community\.reply\.v1\.Reply\/MainList|pgc\.gateway\.player\.v2\.PlayURL\/PlayView)$ script-path=https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/bilibili.protobuf.response.js, argument=[{showUpList}, {purifyTopReplies}, {airborne}, {logLevel}], requires-body=true, binary-body-mode=true, tag=ProtoBuf处理
 
 [MitM]
-hostname=grpc.biliapi.net, app.bilibili.com, api.bilibili.com, api.live.bilibili.com, live.bilibili.com, line3-h5-mobile-api.biligame.com
+hostname=grpc.biliapi.net, app.bilibili.com, api.bilibili.com, api.live.bilibili.com, line3-h5-mobile-api.biligame.com
