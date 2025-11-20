@@ -1,5 +1,5 @@
 # NAME: Apple
-# UPDATED: 2025-07-28
+# UPDATED: 2025-11-20
 
 DOMAIN,a1.mzstatic.com
 DOMAIN,a2.mzstatic.com
@@ -32,7 +32,6 @@ DOMAIN,apptrailers.itunes.apple.com
 DOMAIN,bag.itunes.apple.com
 DOMAIN,beatselectronicsllc.tt.omtrdc.net
 DOMAIN,beta.music.apple.com
-DOMAIN,bookkeeper.itunes.apple.com
 DOMAIN,cdn-cn1.apple-mapkit.com
 DOMAIN,cdn-cn2.apple-mapkit.com
 DOMAIN,cdn-cn3.apple-mapkit.com
