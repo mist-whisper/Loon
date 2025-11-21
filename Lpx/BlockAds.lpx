@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BlockAds.png
-#!date=2025-11-16 16:06:00
+#!date=2025-11-21 12:23:49
 
 [Rule]
 # 12306
@@ -229,6 +229,16 @@ DOMAIN, switch.cup.com.cn, REJECT
 ^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\/ reject-dict
 ^https:\/\/p0\.pipi\.cn\/(?:adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(?:jpg|png)\?imageMogr2\/thumbnail\/(?:860x0|!165x165|!1049x1169) reject-dict
 
+# 美丽修行
+^https:\/\/api\.bevol\.com\/appmain\/app\/home\/launch$ reject-dict
+^https:\/\/api\.bevol\.com\/appmain\/app\/home\/popup$ reject-dict
+^https:\/\/api\.bevol\.com\/personal\/page$ reject-dict
+^https:\/\/api\.bevol\.com\/appmain\/app\/home\/page$ response-body-json-del result.versionPopUp result.isShowSearchLabel result.isShowSearchFeedBack result.centerBannerAdvert result.programmaticAdvertising result.mattsData result.questionnaireMap result.appPullDownAdvert
+^https:\/\/api\.bevol\.com\/appmain\/app\/home\/feed$ response-body-json-del result.banners
+^https:\/\/api\.bevol\.com\/appmain\/app\/home\/feed$ response-body-json-jq '. | .result.returnList |= (map(select(.tname == "userPart"))) | .result.returnList |= map(select(. | has("adId") | not))'
+^https:\/\/api\.bevol\.com\/trialbox\/shop\/app\/homePage$ response-body-json-del result.firstPersonActivity result.mainActivity result.brandZone result.imageAD2
+^https:\/\/api\.bevol\.com\/seach\/foundAndTopSearch$ reject-dict
+
 # 美团 & 美团外卖
 ^http:\/\/wmapi\.meituan\.com\/api\/v7\/(?:loadInfo|openscreen|startpicture) reject-dict
 ^https:\/\/flowplus\.meituan\.net\/v1\/mss_\w+\/linglong\/\d+\.jpg reject-dict
@@ -353,4 +363,4 @@ http-response ^https:\/\/jzts\.cmpassport\.com\/personalized\/getPushContent scr
 http-response ^https:\/\/app\.zhuanzhuan\.com\/zz\/(?:transfer\/getpersonalcenter\?entChanl=&uiType=1&from=1089|v2\/zzlogic\/mywxcontinenthomepage\?from=1089) script-path=https://raw.githubusercontent.com/mist-whisper/Script/master/BlockAds/Zhuan.js, requires-body=true, tag=移除转转广告
 
 [MITM]
-hostname=ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, www.washpayer.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, img*.douban.com, frodo.douban.com, erebor.douban.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, gab.122.gov.cn, adserviceretry.kglink.cn, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com, boxer.baidu.com, m.baidu.com, www.baidu.com, zhidao.baidu.com, asserts.avple.tv, javdb.com, *.pornhub.com, 18hlw.com, lneuk.rslsilne.cc, 7054s.rbcmpeu.org, d2bkn61acaxm61.cloudfront.net, missav.ai, missav.ws, dsenrp55.com, ghfgnm.com, api.xiaoyuzhoufm.com, mobads.baidu.com, fmapp.chinafamilymart.com.cn, spamblocker-api.zeekstudio.com, misc-api-prd-mx.wandafilm.com, acs.m.taobao.com, elemecdn.com, fuss10.elemecdn.com, cube.elemecdn.com, www1.elecfans.com, nr-op.elemecdn.com, acs.m.taobao.com, img.alicdn.com, front-gateway-c.wandafilm.com, gql.reddit.com, gql-fed.reddit.com, app.zhuanzhuan.com, i.waimai.meituan.com, yunbusiness.ccb.com, 114.115.217.129, home.umetrip.com, gw.xiaocantech.com, m.pvp.xoyo.com, bp-api.bestv.cn
+hostname=ad.12306.cn, mobile.12306.cn, list-app-m.i4.cn, *api.alipan.com, member.alipan.com, acs.m.taobao.com, heic.alicdn.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, pan.baidu.com, 2023.redircdn.com, www.washpayer.com, api.douban.com, img3.doubanio.com, qnmob3.doubanio.com, img*.douban.com, frodo.douban.com, erebor.douban.com, image.mybank.icbc.com.cn, hfapp-service.qweather.net, acs-m.freshippo.com, gab.122.gov.cn, adserviceretry.kglink.cn, p0.pipi.cn, flowplus.meituan.net, img.meituan.net, s3plus.meituan.net, osg-service.sgcc.com.cn, api.m.mi.com, home.mi.com, shop-api.retail.mi.com, wallet.95516.com, mobilepaas.abchina.com.cn, ad.mcloud.139.com, jzts.cmpassport.com, boxer.baidu.com, m.baidu.com, www.baidu.com, zhidao.baidu.com, asserts.avple.tv, javdb.com, *.pornhub.com, 18hlw.com, lneuk.rslsilne.cc, 7054s.rbcmpeu.org, d2bkn61acaxm61.cloudfront.net, missav.ai, missav.ws, dsenrp55.com, ghfgnm.com, api.xiaoyuzhoufm.com, mobads.baidu.com, fmapp.chinafamilymart.com.cn, spamblocker-api.zeekstudio.com, misc-api-prd-mx.wandafilm.com, acs.m.taobao.com, elemecdn.com, fuss10.elemecdn.com, cube.elemecdn.com, www1.elecfans.com, nr-op.elemecdn.com, acs.m.taobao.com, img.alicdn.com, front-gateway-c.wandafilm.com, gql.reddit.com, gql-fed.reddit.com, app.zhuanzhuan.com, i.waimai.meituan.com, yunbusiness.ccb.com, 114.115.217.129, home.umetrip.com, gw.xiaocantech.com, m.pvp.xoyo.com, bp-api.bestv.cn, api.bevol.com
