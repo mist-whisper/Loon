@@ -1,13 +1,14 @@
 # NAME: EmbyMainland
 # AUTHOR: wish
-# HOMEPAGE: https://github.com/mist-whisper/Loon/blob/master/Rules/Emby/EmbyMainland.list
-# UPDATED: 2025-11-16
+# UPDATED: 2025-11-22
 
+DOMAIN,emos.lol
 DOMAIN,yhemby.top
 DOMAIN,7777777.buzz
 DOMAIN,cf.imetyou.top
 DOMAIN,music.mefun.org
 
+DOMAIN-KEYWORD,emos
 DOMAIN-KEYWORD,temby
 DOMAIN-KEYWORD,feiyue
 
