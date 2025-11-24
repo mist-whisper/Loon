@@ -1,7 +1,7 @@
 # NAME: Mainland
 # AUTHOR: Sukka wish
 # HOMEPAGE: https://ruleset.skk.moe/List/non_ip/domestic.conf
-# UPDATED: 2025-07-18
+# UPDATED: 2025-11-25
 #This file contains known addresses that are avaliable in the Mainland China.
 # This ruleset is made by Sukka and wish
 
@@ -25,6 +25,7 @@ DOMAIN,bybit.com
 DOMAIN,iqiyis.com
 DOMAIN,speed.dler.io
 
+DOMAIN-SUFFIX,wuyra.com
 DOMAIN-SUFFIX,sony.com
 DOMAIN-SUFFIX,kelee.one
 DOMAIN-SUFFIX,steam.clngaa.com
