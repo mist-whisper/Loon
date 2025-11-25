@@ -7,7 +7,7 @@
 #!loon_version=3.2.9(837)
 #!homepage=https://github.com/mist-whisper/Loon/blob/master/README.md
 #!icon=https://raw.githubusercontent.com/mist-whisper/Icon/master/MyIcon/BlockAds.png
-#!date=2025-11-21 12:23:49
+#!date=2025-11-25 18:12:00
 
 [Rule]
 # 12306
@@ -188,15 +188,17 @@ DOMAIN, switch.cup.com.cn, REJECT
 ^https:\/\/nr-op\.elemecdn\.com\/image\/mussel-\d+\.(png|gif)\?x-oss-process=image\/resize\,m_fill,w_1\d{2},h_1\d{2}\/ reject
 
 # 飞猪
-^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.(?:popresource|screen) reject
-^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.guide\.guess\.what\.you\.like reject
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.(?:allresource|predict) reject-dict
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource\/ reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.predict\/ reject-dict
+
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.tripzoo\.new\.couponlist\/ reject-dict
+
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.my\.recommendcard\/ reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.recommend\.common\.guess\.tab\.feeds\/ reject-
 
 # Github速率限制返回429问题
 # ^https:\/\/(raw|gist)\.githubusercontent\.com\/ header-replace Accept-Language en-us
-^https:\/\/github\.com\/ header-replace Accept-Language en-us
+# ^https:\/\/github\.com\/ header-replace Accept-Language en-us
 
 # 韩剧TV
 ^https:\/\/mobads\.baidu\.com\/cpro\/ui\/mads\.php reject-dict
