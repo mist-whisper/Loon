@@ -2,7 +2,7 @@
 > 禁止在中华人民共和国境内平台公开传播本仓库内的任何内容或以此牟利！
 
 > [!WARNING]
-> 接上游开发者通知，本仓库将于近日停更，转为闭源模式操作，如有需要可访问[我的网站](https://loonhub.wuyra.com/)继续使用，但请遵守相关[使用声明](https://loonhub.wuyra.com/Terms)。
+> 接上游开发者通知，本仓库部分内容后续不再进行更新，可能进行存档/私有化/删除等操作，如有需要可访问[我的网站](https://loonhub.wuyra.com/)继续使用，但请遵守相关[使用声明](https://loonhub.wuyra.com/Terms)。
 > 
 > 亦可前往其他上游作者仓库或插件网站进行合法使用，比如[插件中心](https://pluginhub.kelee.one/)等，感谢理解。
 
