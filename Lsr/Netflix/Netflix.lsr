@@ -1,10 +1,12 @@
 # NAME: Netflix
-# UpdateTime：2025-11-26 03:07:18
-# RuleCount：1157
+# UpdateTime：2025-11-28
+# RuleCount：1158
 
 DOMAIN, e13252.dscg.akamaiedge.net
 DOMAIN, netflix.com.edgesuite.net
 DOMAIN, h-netflix.online-metrix.net
+
+DOMAIN-SUFFIX,fast.com
 DOMAIN-SUFFIX, netflix.com.au
 DOMAIN-SUFFIX, netflix.ca
 DOMAIN-SUFFIX, us-west-2.amazonaws.com
