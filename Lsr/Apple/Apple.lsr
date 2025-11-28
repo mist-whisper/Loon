@@ -1,5 +1,5 @@
 # NAME: Apple
-# UPDATED: 2025-11-20
+# UPDATED: 2025-11-28
 
 DOMAIN,a1.mzstatic.com
 DOMAIN,a2.mzstatic.com
@@ -267,6 +267,7 @@ DOMAIN,beta.apple.com
 DOMAIN,testflight.apple.com
 DOMAIN,www-cdn.icloud.com.akadns.net
 
+DOMAIN-SUFFIX,blobstore.apple.com
 DOMAIN-SUFFIX,100beatscheap.com
 DOMAIN-SUFFIX,1monsterbeatsbydreus.com
 DOMAIN-SUFFIX,1to1computing.com.au
