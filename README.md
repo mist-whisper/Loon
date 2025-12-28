@@ -2,9 +2,9 @@
 > 禁止在中华人民共和国境内平台公开传播本仓库内的任何内容或以此牟利！
 
 > [!WARNING]
-> 接上游开发者通知，本仓库部分内容不再进行更新，转为线上网站闭源运作。后续可能会对GitHub仓库相关内容进行存档/私有化/删除等操作，如有需要可访问[Kelvin Lab](https://kelvinlab.wuyra.com)继续使用，但请遵守相关[服务条款与用户协议](https://kelvinlab.wuyra.com/Terms)。
+> 本仓库即日起进行存档，转为线上网站闭源运作。如有需要可访问[Kelvin Lab](https://kelvinlab.wuyra.com)继续使用，但请遵守相关[服务条款与用户协议](https://kelvinlab.wuyra.com/Terms)。
 > 
-> 亦可前往其他上游作者仓库或插件网站进行合法使用，比如[插件中心](https://pluginhub.kelee.one)等，感谢理解。
+> 亦可前往其他上游作者仓库或插件网站进行合法使用，如[插件中心](https://pluginhub.kelee.one)等，感谢理解。
 
 > [!IMPORTANT]
 > - 仓库内引用的资源均保留了原作者署名信息，在此感谢各位原作者。尊重每一位原作者和原创者的劳动成果。如果您认为本仓库中的内容侵犯了您的版权或其他合法权益，请及时联系以进行删除或修改。
@@ -22,18 +22,3 @@
 >  > **您必须在下载后的 24 小时内从计算机或手机中完全删除以上内容。**
 > 
 >  > **您使用或者复制了本仓库的任何脚本，则视为`已接受`此声明，请仔细阅读。**
-
-------
-
-#### 配置模板
-> [!TIP]
-> 仅提供基础配置文件，不提供其他配置和软件教学，详细使用方法请参考[官方文档](https://nsloon.app/docs/intro)自行研究。
-> 
-> 点击一键导入[个人自用基础配置](https://www.nsloon.com/openloon/import?sub=https://raw.githubusercontent.com/mist-whisper/Loon/master/Loon.lcf)
-
-------
-
-#### 插件
-
-> [!note]
-> 不再提供一键导入链接，如有需求自行拉取raw使用。
