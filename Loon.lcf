@@ -1,0 +1,109 @@
+# Loon
+# Date: 2025.09
+# Author: wish
+# Version: 3.3.4
+
+# > 通用设置
+[General]
+doh3-server = h3://223.5.5.5/dns-query
+mitm-on-wifi-access = true
+doq-server = quic://dns.alidns.com:853
+ipv6-vif = off
+doh-server = https://doh.pub/dns-query
+ip-mode = dual
+# DNS服务器
+dns-server = system,223.5.5.5
+sni-sniffing = true
+disable-stun = true
+dns-reject-mode = LoopbackIP
+domain-reject-mode = DNS
+udp-fallback-mode = REJECT
+wifi-access-http-port = 7222
+wifi-access-socks5-port = 7221
+# 允许Wi-Fi访问
+allow-wifi-access = false
+interface-mode = auto
+test-timeout = 5
+disconnect-on-policy-change = true
+# Internet 测试 URL
+internet-test-url = http://connectivitycheck.platform.hicloud.com/generate_204
+# 代理测速 URL
+proxy-test-url = http://www.gstatic.com/generate_204
+resource-parser = https://raw.githubusercontent.com/sub-store-org/Sub-Store/release/sub-store-parser.loon.min.js
+geoip-url = https://geodata.kelee.one/Country-Masaiki.mmdb
+ipasn-url = https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb
+# 跳过代理
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
+bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
+
+# > 本地节点
+[Proxy]
+
+# > 机场订阅
+[Remote Proxy]
+
+# > 筛选订阅节点
+[Remote Filter]
+阿根廷节点 = NameRegex, FilterKey = "^(?!.*家宽).*(🇦🇷|阿根廷)"
+德国节点 = NameRegex, FilterKey = "^(?!.*家宽).*(🇩🇪|德国|慕尼黑|法兰克福)"
+韩国节点 = NameRegex, FilterKey = "^(?!.*家宽).*(🇰🇷|韩国|首尔)"
+荷兰节点 = NameRegex, FilterKey = "^(?!.*家宽).*(🇳🇱|荷兰)"
+美国节点 = NameRegex, FilterKey = "^(?!.*(家宽|星链)).*(🇺🇸|美国|US|圣何塞|凤凰城)"
+香港节点 = NameRegex, FilterKey = "^(?!.*(家宽|游戏)).*(🇭🇰|香港)"
+新加坡节点 = NameRegex, FilterKey = "^(?!.*家宽).*(🇸🇬|新加坡)"
+台湾节点 = NameRegex, FilterKey = "^(?!.*家宽).*(🇨🇳|🇹🇼|🇼🇸|台湾)"
+日本节点 = NameRegex, FilterKey = "^(?!.*(家宽|游戏|星链|5G)).*(🇯🇵|日本|东京|大阪)"
+英国节点 = NameRegex, FilterKey = "^(?!.*家宽)).*(🇬🇧|英国|伦敦)"
+全球节点 = NameRegex, FilterKey = "^(?=.*(.*))(?!.*((?i)回国|校园|教育|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|群|TG)).*$"
+
+# > 策略组
+[Proxy Group]
+美国 = load-balance,美国节点,url = http://cp.cloudflare.com/generate_204,interval = 600,max-timeout = 3000,algorithm = pcc,img-url = https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/united-states.gif
+香港 = load-balance,香港节点,url = http://cp.cloudflare.com,interval = 600,max-timeout = 3000,algorithm = pcc,img-url = https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/hong-kong.gif
+新加坡 = load-balance,新加坡节点,url = http://cp.cloudflare.com/generate_204,interval = 600,max-timeout = 3000,algorithm = pcc,img-url = https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/FlagGif/singapore.gif
+漏网之鱼 = load-balance,DIRECT,美国,新加坡,url = http://cp.cloudflare.com,algorithm = pcc,img-url = https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/FishPort.png
+
+# > 代理链
+[Proxy Chain]
+
+# > 本地规则
+[Rule]
+# Type:DOMAIN-SUFFIX, DOMAIN, DOMAIN-KEYWORD, USER-AGENT, URL-REGEX, IP-CIDR
+# Strategy:DIRECT, PROXY, REJECT
+# Options:no-resolve(only for cidr)
+# IP-CIDR, 192.168.0.0/16, DIRECT
+# IP-CIDR, 10.0.0.0/8, DIRECT
+# IP-CIDR, 172.16.0.0/12, DIRECT
+# IP-CIDR, 127.0.0.0/8, DIRECT
+FINAL,漏网之鱼
+ 
+# > 远程规则
+[Remote Rule]
+
+# > 本地 DNS 映射
+[Host]
+# 当需要对特定域名指定DNS服务或者固定IP时，可以使用此功能，可以指定以下四种模式：
+# 域名映射域名，格式为：*•apple.com = server:system
+# 域名映射IP，格式为：*.testflight.apple.com = server:8.8.4.4
+# 域名指定查询DNS服务器，格式为：google.com= server:8.8.8.8 或者 *.baidu . com = server:https:1/example .com/ dns-query
+# 特定SSID环境下指定DNS查询的服务器，格式为：
+# Firebase Cloud Messaging
+#mtalk.google.com = server: 108.177.125.188
+
+# > 本地复写
+[Rewrite]
+
+# > 脚本
+[Script]
+
+# > 远程脚本订阅
+[Remote Script]
+
+# > 插件
+[Plugin]
+
+[Mitm]
+hostname=
+ca-p12=
+ca-passphrase=
+skip-server-cert-verify=false
